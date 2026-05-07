@@ -18,6 +18,11 @@ export default function Navbar() {
   const shouldHide = hideNavbarRoutes.some((route) => pathname?.includes(route));
 
   useEffect(() => {
+    if (!supabase) {
+      setIsAuthenticated(false);
+      return;
+    }
+
     // Check initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setIsAuthenticated(!!session);
@@ -40,7 +45,9 @@ export default function Navbar() {
   if (shouldHide) return null;
 
   const handleSignOut = async () => {
-    await supabase.auth.signOut();
+    if (supabase) {
+      await supabase.auth.signOut();
+    }
   };
 
   return (
