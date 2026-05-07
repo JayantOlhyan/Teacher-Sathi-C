@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, User, LogOut, Settings, HelpCircle, BookOpen } from "lucide-react";
 import { supabase } from "@/lib/supabase";
-import LanguageToggle from "./LanguageToggle";
+import { LanguageToggle } from "./LanguageToggle";
 
 export default function Navbar() {
   const pathname = usePathname();
