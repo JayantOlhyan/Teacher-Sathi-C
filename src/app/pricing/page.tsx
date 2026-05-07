@@ -18,15 +18,7 @@ export default function PricingPage() {
 
   return (
     <div className="min-h-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] font-sans pb-20">
-      <header className="flex items-center justify-center p-6 bg-white/80 backdrop-blur-sm border-b sticky top-0 z-50">
-        <nav className="flex items-center gap-8 text-sm font-medium">
-          <Link href="/features" className="hover:text-[#1D4ED8] transition-colors">Features</Link>
-          <Link href="/pricing" className="text-[#1D4ED8]">Pricing</Link>
-          <Link href="/about" className="hover:text-[#1D4ED8] transition-colors">About</Link>
-          <Link href="/login" className="hover:text-[#1D4ED8] transition-colors ml-4 border-l pl-8">Login</Link>
-          <Link href="/signup" className="hover:text-[#1D4ED8] transition-colors">Sign Up</Link>
-        </nav>
-      </header>
+
 
       <main className="max-w-4xl mx-auto pt-16 px-4">
         <div className="text-center space-y-6 mb-12">

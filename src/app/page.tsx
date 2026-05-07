@@ -22,19 +22,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-[#0B1121] text-white overflow-hidden">
-      {/* Header */}
-      <header className="flex items-center justify-between p-4 sm:px-8 bg-[#1D4ED8]">
-        <div className="font-bold text-xl flex items-center gap-2 text-white">
-          TeacherSathi
-        </div>
-        <div className="flex items-center gap-4">
-          <Link href="/login">
-            <Button variant="ghost" className="bg-white text-[#1D4ED8] hover:bg-white/90 hover:text-[#1D4ED8] rounded-full px-6 font-semibold">
-              Login / Sign Up
-            </Button>
-          </Link>
-        </div>
-      </header>
 
       <main className="flex-1 flex flex-col items-center w-full">
         {/* Hero Section */}
