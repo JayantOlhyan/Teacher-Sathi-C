@@ -1,6 +1,7 @@
 "use client";
 
 import { Link } from "@/i18n/routing";
+import { useState } from "react";
 import { Play, Pause, Volume2, Maximize, MonitorSmartphone, ChevronDown, Share2, Clock } from "lucide-react";
 
 export default function VideoPlayerPage() {

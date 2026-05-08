@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { Play, CheckSquare, FileText, Download, BarChart, BookOpen, GraduationCap, Sparkles } from "lucide-react";
 

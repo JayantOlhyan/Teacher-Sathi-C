@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Link } from "@/i18n/routing";
 import { Check, Lock, ChevronDown, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";

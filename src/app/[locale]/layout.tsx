@@ -3,7 +3,7 @@ import { Inter, Noto_Sans_Devanagari } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import Navbar from "@/components/Navbar";
-import "./globals.css";
+import "../globals.css";
 
 const inter = Inter({
   subsets: ["latin"],

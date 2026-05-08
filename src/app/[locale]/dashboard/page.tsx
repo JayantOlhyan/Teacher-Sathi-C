@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/routing";
-import { Bell, UserCheck, BookOpen, Presentation, Play, PlusCircle, Search, MessageCircle } from "lucide-react";
+import { Bell, UserCheck, BookOpen, Presentation, Play, PlusCircle, Search, MessageCircle, Users } from "lucide-react";
 
 export default function DashboardPage() {
   return (
