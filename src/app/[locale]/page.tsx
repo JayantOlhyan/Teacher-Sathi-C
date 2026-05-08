@@ -1,23 +1,20 @@
 import Image from "next/image";
-import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/Button";
-import { LanguageToggle } from "@/components/LanguageToggle";
-import { Play, BrainCircuit, CheckSquare, FileText, Download, BarChart, BookOpen, GraduationCap, Sparkles } from "lucide-react";
+import { Play, CheckSquare, FileText, Download, BarChart, BookOpen, GraduationCap, Sparkles } from "lucide-react";
 
 export default function Home() {
   const t = useTranslations("Hero");
-  const nav = useTranslations("Nav");
 
   const features = [
-    { title: "Lesson Planning", icon: FileText, desc: "Prepare lessons in five minutes." },
-    { title: "Student Analytics", icon: BarChart, desc: "Growth and performance tracking." },
-    { title: "Homework Assignment Tools", icon: CheckSquare, desc: "Engage with homework assignments." },
-    { title: "Easy Assessment", icon: BookOpen, desc: "Compare free assessments." },
-    { title: "Homework Assignments", icon: BookOpen, desc: "Encourages homework assignments." },
-    { title: "Phonemic Utility", icon: Sparkles, desc: "Design custom tools and tests." },
-    { title: "Books and Extracts", icon: BookOpen, desc: "Report format answer writing." },
-    { title: "Resource Library", icon: Download, desc: "Download materials and resources." },
+    { title: "Lesson Planning", icon: FileText, desc: "Prepare comprehensive lessons in minutes." },
+    { title: "Student Analytics", icon: BarChart, desc: "Detailed growth and performance tracking." },
+    { title: "Interactive Quizzes", icon: CheckSquare, desc: "Engage students with AI-generated quizzes." },
+    { title: "Smart Assessment", icon: BookOpen, desc: "Automated grading and personalized feedback." },
+    { title: "Homework Management", icon: GraduationCap, desc: "Assign and track homework seamlessly." },
+    { title: "Phonemic Awareness", icon: Sparkles, desc: "Specialized tools for early literacy." },
+    { title: "NCERT Solutions", icon: BookOpen, desc: "Verified solutions for all chapters." },
+    { title: "Resource Library", icon: Download, desc: "Access curated teaching materials." },
   ];
 
   return (
@@ -26,11 +23,25 @@ export default function Home() {
       <main className="flex-1 flex flex-col items-center w-full">
         {/* Hero Section */}
         <section className="w-full flex flex-col lg:flex-row items-center justify-between gap-12 py-16 px-4 sm:px-12 max-w-[1400px] mx-auto">
-          <div className="flex-1 space-y-4">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-balance leading-[1.1]">
-              Teachers ka <br /> Superpower <br />
-              <span className="font-sans">शिक्षकों का सुपरपावर</span>
+          <div className="flex-1 space-y-6">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-balance leading-tight">
+              {t('title')}
             </h1>
+            <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
+              {t('subtitle')}
+            </p>
+            <div className="flex flex-wrap gap-4 pt-4">
+              <Link href="/signup">
+                <Button className="bg-[#1D4ED8] hover:bg-blue-600 text-white px-8 py-6 rounded-xl text-lg font-bold">
+                  {t('cta_primary')}
+                </Button>
+              </Link>
+              <Link href="/#how-it-works">
+                <Button variant="outline" className="border-white/20 hover:bg-white/10 px-8 py-6 rounded-xl text-lg font-bold">
+                  {t('cta_secondary')}
+                </Button>
+              </Link>
+            </div>
           </div>
 
           <div className="flex-1 relative w-full h-[400px] flex items-center justify-center">
@@ -42,23 +53,24 @@ export default function Home() {
             </div>
 
             {/* Visuals - MCQ Quiz */}
-            <div className="absolute top-0 right-10 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-2xl z-20 w-[220px]">
-              <h3 className="text-sm font-semibold mb-3 text-white/80">MCQ Quiz</h3>
+            <div className="absolute top-0 right-10 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-2xl z-20 w-[240px]">
+              <h3 className="text-sm font-semibold mb-3 text-white/80">Class 10: Life Processes</h3>
               <div className="space-y-2">
+                <p className="text-[10px] text-white/60 mb-2">Q: Which of the following is an autotroph?</p>
                 <div className="bg-white/5 border border-white/10 p-2 rounded-md text-xs flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full border border-white/40"></div>
-                  Option A
+                  Fungi
                 </div>
-                <div className="bg-success/20 border border-success p-2 rounded-md text-xs flex items-center justify-between">
+                <div className="bg-green-500/20 border border-green-500 p-2 rounded-md text-xs flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-success"></div>
-                    Correct
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    Green Plants
                   </div>
-                  <CheckSquare className="w-3 h-3 text-success" />
+                  <CheckSquare className="w-3 h-3 text-green-500" />
                 </div>
                 <div className="bg-white/5 border border-white/10 p-2 rounded-md text-xs flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full border border-white/40"></div>
-                  Option B
+                  Human beings
                 </div>
               </div>
             </div>
@@ -114,7 +126,7 @@ export default function Home() {
         <section className="w-full max-w-[1200px] mx-auto px-4 mb-16">
           <div className="bg-[#1D4ED8] rounded-2xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
             <h2 className="text-2xl sm:text-3xl font-bold max-w-xl text-center md:text-left">
-              Join our teachers to jump inside our online white boards, and let's go, teachers!
+              Empower your teaching with AI-powered NCERT resources today!
             </h2>
             <Link href="/signup">
               <Button className="bg-[#FBBF24] text-black hover:bg-[#F59E0B] rounded-xl px-10 py-6 text-xl font-bold">

@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import { Play, Pause, Volume2, Maximize, Keyboard, MonitorSmartphone, ChevronDown, Share2, Clock } from "lucide-react";
+import { Link } from "@/i18n/routing";
+import { Play, Pause, Volume2, Maximize, MonitorSmartphone, ChevronDown, Share2, Clock } from "lucide-react";
 
 export default function VideoPlayerPage() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -50,13 +49,25 @@ export default function VideoPlayerPage() {
                </div>
             </div>
 
-            {/* Mock Video Area */}
-            <div className="flex-1 bg-[#1A4150] flex items-center justify-center relative">
-               <div className="text-white text-3xl font-bold opacity-30">Video Content Placeholder</div>
-               {/* YouTube watermark mock */}
-               <div className="absolute bottom-16 right-4 text-white/50 text-xl font-bold flex items-center gap-1">
-                 ▶ YouTube
-               </div>
+            {/* YouTube Video Area */}
+            <div className="flex-1 bg-black flex items-center justify-center relative">
+               <iframe 
+                 className="w-full h-full"
+                 src={`https://www.youtube.com/embed/6YI7YqW8-rA?enablejsapi=1&autoplay=${isPlaying ? 1 : 0}&controls=0`}
+                 title="YouTube video player"
+                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                 allowFullScreen
+               ></iframe>
+               {!isPlaying && (
+                 <div 
+                   className="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer group"
+                   onClick={() => setIsPlaying(true)}
+                 >
+                   <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform">
+                     <Play className="w-10 h-10 text-white fill-current" />
+                   </div>
+                 </div>
+               )}
             </div>
 
             {/* Custom Controls Bottom Overlay */}
@@ -124,11 +135,11 @@ export default function VideoPlayerPage() {
             <h3 className="font-semibold text-lg mb-4 text-white">Jump To</h3>
             <div className="space-y-1">
               {[
-                { time: "0:00:00", label: "Light Reflection", active: true },
-                { time: "0:07:03", label: "Concept Election", active: false },
-                { time: "0:02:58", label: "Light Exanation", active: false },
-                { time: "0:13:34", label: "Examples · Summary", active: false },
-                { time: "0:35:29", label: "Summar Int", active: false },
+                { time: "0:00:00", label: "Introduction to Light", active: true },
+                { time: "0:07:03", label: "Reflection Laws", active: false },
+                { time: "0:12:58", label: "Spherical Mirrors", active: false },
+                { time: "0:18:34", label: "Image Formation", active: false },
+                { time: "0:25:29", label: "Mirror Formula", active: false },
               ].map((item, idx) => (
                 <div key={idx} className={`flex items-center gap-4 p-2 rounded-lg cursor-pointer text-sm transition-colors ${item.active ? "bg-white/10 text-white font-medium" : "text-gray-400 hover:bg-white/5 hover:text-gray-200"}`}>
                   <span className="font-mono">{item.time}</span>
@@ -144,8 +155,8 @@ export default function VideoPlayerPage() {
             <div className="space-y-2">
               {[
                 "Reflection | परावर्तन",
-                "Reflection | उत्साहित",
-                "Reflections | सामान्य",
+                "Refraction | अपवर्तन",
+                "Spherical Mirrors | गोलीय दर्पण",
               ].map((concept, idx) => (
                 <div key={idx} className="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/5 cursor-pointer hover:bg-white/10 transition-colors text-sm">
                   <span>{concept}</span>

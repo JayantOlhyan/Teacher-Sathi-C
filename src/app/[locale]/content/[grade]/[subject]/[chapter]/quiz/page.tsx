@@ -1,11 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { ArrowRight, Check, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export default function QuickQuizPage() {
-  const [selectedOption, setSelectedOption] = useState<string | null>("B");
 
   return (
     <div className="min-h-screen bg-[#10142A] text-white font-sans flex flex-col items-center py-10 px-4">
@@ -47,7 +45,7 @@ export default function QuickQuizPage() {
             <div>
               <div className="flex items-center gap-4 bg-danger/10 border border-danger p-4 rounded-2xl cursor-pointer">
                 <div className="w-8 h-8 rounded-full bg-danger/20 text-danger flex items-center justify-center font-bold shrink-0">A</div>
-                <div className="text-danger font-medium text-lg">The angle of incidence always equals the corrects of reflection.</div>
+                <div className="text-danger font-medium text-lg">The angle of incidence is always greater than the angle of reflection.</div>
               </div>
               <div className="text-danger font-medium text-sm flex items-center gap-1 mt-2 ml-2">
                 <X className="w-4 h-4 stroke-[3]" /> Incorrect
@@ -70,13 +68,13 @@ export default function QuickQuizPage() {
             {/* Option C - Default */}
             <div className="flex items-center gap-4 bg-white/5 border border-white/10 p-4 rounded-2xl cursor-pointer hover:bg-white/10 transition-colors">
               <div className="w-8 h-8 rounded-full bg-white/10 text-gray-300 flex items-center justify-center font-bold shrink-0">C</div>
-              <div className="text-gray-300 font-medium text-lg">The angle of incidence always thts angle of reflection, measurmal.</div>
+              <div className="text-gray-300 font-medium text-lg">The incident ray and reflected ray are always perpendicular to each other.</div>
             </div>
 
             {/* Option D - Default */}
             <div className="flex items-center gap-4 bg-white/5 border border-white/10 p-4 rounded-2xl cursor-pointer hover:bg-white/10 transition-colors">
               <div className="w-8 h-8 rounded-full bg-white/10 text-gray-300 flex items-center justify-center font-bold shrink-0">D</div>
-              <div className="text-gray-300 font-medium text-lg">The angle of incidence always equalt angle of reflection.</div>
+              <div className="text-gray-300 font-medium text-lg">Reflection only occurs on perfectly smooth, mirror-like surfaces.</div>
             </div>
           </div>
 

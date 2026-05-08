@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Menu, X, User, LogOut, Settings, HelpCircle, BookOpen } from "lucide-react";
+import { Link, usePathname } from "@/i18n/routing";
+import { Menu, X, User, LogOut, Settings, HelpCircle } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { LanguageToggle } from "./LanguageToggle";
 
@@ -14,7 +13,7 @@ export default function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   // Hidden on focused routes
-  const hideNavbarRoutes = ["/video", "/test", "/quiz", "/admin"];
+  const hideNavbarRoutes = ["/video", "/test", "/quiz", "/admin", "/dashboard"];
   const shouldHide = hideNavbarRoutes.some((route) => pathname?.includes(route));
 
   useEffect(() => {
@@ -78,7 +77,7 @@ export default function Navbar() {
               <>
                 <Link href="/#features" className="hover:text-blue-200 transition-colors">Features</Link>
                 <Link href="/pricing" className={`hover:text-blue-200 transition-colors ${pathname === "/pricing" ? "font-bold border-b-2 border-white pb-1" : ""}`}>Pricing</Link>
-                <Link href="#" className="hover:text-blue-200 transition-colors">Mission</Link>
+                <Link href="/#mission" className="hover:text-blue-200 transition-colors">Mission</Link>
               </>
             )}
           </div>
@@ -124,10 +123,11 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-4">
-            <LanguageToggle />
             <button 
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-md hover:bg-white/10 transition-colors"
+              aria-expanded={isOpen}
+              aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -158,8 +158,9 @@ export default function Navbar() {
               <>
                 <Link href="/#features" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">Features</Link>
                 <Link href="/pricing" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">Pricing</Link>
-                <Link href="#" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">Mission</Link>
-                <div className="pt-4 mt-2 border-t border-white/10">
+                <Link href="/#mission" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">Mission</Link>
+                <div className="pt-4 mt-2 border-t border-white/10 space-y-3">
+                  <LanguageToggle />
                   <Link href="/login" className="block w-full text-center bg-white text-[#1D4ED8] px-4 py-3 rounded-lg font-bold">
                     Login / Sign Up
                   </Link>

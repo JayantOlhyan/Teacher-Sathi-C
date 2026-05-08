@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { Lock, Play } from "lucide-react";
 
-export default function ClassContentPage({ params }: { params: { grade: string } }) {
+export default function ClassContentPage() {
   const [activeClass, setActiveClass] = useState("Class 8");
 
   const classes = ["Class 6", "Class 7", "Class 8", "Class 9", "Class 10"];

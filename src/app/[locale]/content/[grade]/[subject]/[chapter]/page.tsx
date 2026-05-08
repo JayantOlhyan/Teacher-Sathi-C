@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { Play, CheckSquare, MessageSquare, Download, Lock, FileText, BrainCircuit, MonitorSmartphone, Clock } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
-export default function ChapterHubPage({ params }: { params: { grade: string, subject: string, chapter: string } }) {
+export default function ChapterHubPage() {
   
   const resources = [
     {

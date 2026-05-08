@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { Eye, GraduationCap, BookOpen } from "lucide-react";
+import { Eye, GraduationCap } from "lucide-react";
 
 export default function LoginPage() {
   const [role, setRole] = useState<"teacher" | "student">("teacher");
@@ -28,7 +27,7 @@ export default function LoginPage() {
         </div>
         <div className="relative z-10 max-w-md mx-auto text-center mt-auto">
           <p className="text-white font-medium text-2xl leading-relaxed tracking-wide italic font-serif">
-            'Built for my mother, <br/> a government school teacher'
+            &apos;Built for my mother, <br/> a government school teacher&apos;
           </p>
         </div>
       </div>
@@ -46,14 +45,18 @@ export default function LoginPage() {
             <button 
               onClick={() => setRole("teacher")}
               className={`flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 text-sm font-medium transition-colors ${role === "teacher" ? "bg-[#1D4ED8] text-white" : "text-gray-500 hover:text-gray-900"}`}
+              role="tab"
+              aria-selected={role === "teacher"}
             >
-              I'm a Teacher 📚
+              I&apos;m a Teacher 📚
             </button>
             <button 
               onClick={() => setRole("student")}
               className={`flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 text-sm font-medium transition-colors ${role === "student" ? "bg-[#1D4ED8] text-white" : "text-gray-500 hover:text-gray-900"}`}
+              role="tab"
+              aria-selected={role === "student"}
             >
-              I'm a Student 🎓
+              I&apos;m a Student 🎓
             </button>
           </div>
 
