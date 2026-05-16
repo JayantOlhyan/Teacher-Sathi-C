@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useRouter, usePathname } from "@/i18n/routing";
+import { useRouter, usePathname } from "next/navigation";
 import { useLocale } from "next-intl";
 import { Button } from "./ui/Button";
 
@@ -12,7 +12,11 @@ export function LanguageToggle() {
 
   const toggleLanguage = () => {
     const nextLocale = locale === "en" ? "hi" : "en";
-    router.replace(pathname, { locale: nextLocale });
+    if (!pathname) return;
+    
+    // Safely replace the locale prefix in the pathname
+    const newPath = pathname.replace(`/${locale}`, `/${nextLocale}`);
+    router.replace(newPath);
   };
 
   return (

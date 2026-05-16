@@ -63,9 +63,10 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`${inter.variable} ${notoSansDevanagari.variable} font-sans antialiased bg-background text-foreground`}
+        suppressHydrationWarning
       >
         <NextIntlClientProvider messages={messages}>
           <Navbar />

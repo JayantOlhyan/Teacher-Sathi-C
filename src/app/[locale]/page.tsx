@@ -32,16 +32,16 @@ export default function Home() {
               {t('subtitle')}
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <Link href="/signup">
-                <Button className="bg-[#1D4ED8] hover:bg-blue-600 text-white px-8 py-6 rounded-xl text-lg font-bold">
+              <Button asChild className="bg-[#1D4ED8] hover:bg-blue-600 text-white px-8 py-6 rounded-xl text-lg font-bold">
+                <Link href="/signup">
                   {t('cta_primary')}
-                </Button>
-              </Link>
-              <Link href="/#how-it-works">
-                <Button variant="outline" className="border-white/20 hover:bg-white/10 px-8 py-6 rounded-xl text-lg font-bold">
+                </Link>
+              </Button>
+              <Button asChild variant="outline" className="border-white/20 hover:bg-white/10 px-8 py-6 rounded-xl text-lg font-bold">
+                <Link href="/#how-it-works">
                   {t('cta_secondary')}
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
 
@@ -129,11 +129,11 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl font-bold max-w-xl text-center md:text-left">
               Empower your teaching with AI-powered NCERT resources today!
             </h2>
-            <Link href="/signup">
-              <Button className="bg-[#FBBF24] text-black hover:bg-[#F59E0B] rounded-xl px-10 py-6 text-xl font-bold">
+            <Button asChild className="bg-[#FBBF24] text-black hover:bg-[#F59E0B] rounded-xl px-10 py-6 text-xl font-bold">
+              <Link href="/signup">
                 Join Now
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </section>
 
