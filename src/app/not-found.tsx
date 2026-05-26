@@ -1,7 +1,6 @@
 'use client';
 
 // This file is required by next-intl to catch unmatched routes outside of the middleware
-import Error from './[locale]/error';
 
 export default function NotFound() {
   return (
