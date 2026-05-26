@@ -23,12 +23,19 @@ export default function Error({
           </svg>
         </div>
         <div className="space-y-2">
-          <h2 className="text-2xl font-bold text-gray-900">Something went wrong! / कुछ गलत हो गया!</h2>
+          <h2 className="text-2xl font-bold text-gray-900">500 - Server Error / सर्वर त्रुटि</h2>
           <p className="text-gray-500">
             An unexpected error occurred. Please try refreshing the page.
             <br />
             एक अप्रत्याशित त्रुटि हुई। कृपया पृष्ठ को रीफ्रेश करने का प्रयास करें।
           </p>
+          <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-100 text-sm text-gray-600">
+            <p className="mb-1 font-medium text-gray-800">Need help? / मदद चाहिए?</p>
+            <p>If the problem persists, please contact support:</p>
+            <a href="mailto:support@teachersathi.in" className="text-[#1D4ED8] font-medium hover:underline block mt-1">
+              support@teachersathi.in
+            </a>
+          </div>
         </div>
         <Button 
           onClick={() => reset()}

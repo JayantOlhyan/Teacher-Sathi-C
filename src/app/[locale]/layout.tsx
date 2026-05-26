@@ -50,6 +50,9 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     icons: {
       icon: '/favicon.ico',
     },
+    verification: {
+      google: '-a0wyjaTybF3gldEtwwHLwq_ChLau7TLls8Q1KFF7lE',
+    },
   };
 }
 
