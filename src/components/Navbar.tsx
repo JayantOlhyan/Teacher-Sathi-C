@@ -5,7 +5,6 @@ import { Link, usePathname } from "@/i18n/routing";
 import { Menu, X, User, LogOut, Settings, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/lib/supabase";
-import { LanguageToggle } from "./LanguageToggle";
 import { useTranslations } from "next-intl";
  
 export default function Navbar() {
@@ -86,8 +85,6 @@ export default function Navbar() {
 
           {/* Right Actions (Desktop) */}
           <div className="hidden md:flex items-center gap-4">
-            <LanguageToggle />
-            
             {isAuthenticated ? (
               <div className="relative">
                 <button 
@@ -169,7 +166,6 @@ export default function Navbar() {
                 <Link href="/pricing" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">{t("pricing")}</Link>
                 <Link href="/#mission" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">{t("mission")}</Link>
                 <div className="pt-4 mt-2 border-t border-white/10 space-y-3">
-                  <LanguageToggle />
                   <Link href="/login" className="block w-full text-center bg-white text-[#1D4ED8] px-4 py-3 rounded-lg font-bold">
                     {t("login_signup")}
                   </Link>
