@@ -38,7 +38,7 @@ export default function VideoPlayerPage() {
                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-1">
                    <div className="w-full h-full bg-[#E1A140] rounded-full flex items-center justify-center text-white">🎓</div>
                  </div>
-                 <h2 className="text-lg font-medium text-white shadow-sm">Light Reflection | Physics Classroom Classroom</h2>
+                 <h2 className="text-lg font-medium text-white shadow-sm">Light Reflection | Physics Classroom</h2>
                </div>
                <div className="flex gap-4">
                  <button className="flex flex-col items-center gap-1 text-xs text-white/80 hover:text-white">

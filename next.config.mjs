@@ -14,6 +14,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'www.svgrepo.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'i.pravatar.cc',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn-icons-png.flaticon.com',
+      },
     ],
   },
 };

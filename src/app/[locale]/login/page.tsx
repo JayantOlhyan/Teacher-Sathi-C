@@ -4,10 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/Button";
-import { Eye, GraduationCap } from "lucide-react";
+import { Eye, EyeOff, GraduationCap } from "lucide-react";
 
 export default function LoginPage() {
   const [role, setRole] = useState<"teacher" | "student">("teacher");
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="min-h-screen flex font-sans bg-[#F9F9F4]">
@@ -70,13 +71,17 @@ export default function LoginPage() {
               />
             </div>
             <div className="relative">
-              <input 
-                type="password" 
-                placeholder="Password" 
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
                 className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1D4ED8] bg-transparent"
               />
-              <button type="button" className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-                <Eye className="w-5 h-5" />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
+              >
+                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
               </button>
             </div>
             <Button className="w-full bg-[#1D4ED8] hover:bg-[#1e40af] text-white py-6 rounded-lg text-lg">

@@ -107,7 +107,7 @@ export default function Home() {
         </div>
 
         {/* Feature Grid Section */}
-        <section className="w-full py-16 px-4 sm:px-8 max-w-[1200px] mx-auto">
+        <section id="features" className="w-full py-16 px-4 sm:px-8 max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {features.map((feature, idx) => (
               <div key={idx} className="bg-[#1A233A] border border-white/5 rounded-xl p-5 flex items-start gap-4 hover:bg-[#1E293B] transition-colors">
