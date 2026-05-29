@@ -3,6 +3,7 @@ import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { Play, CheckSquare, FileText, Download, BarChart, BookOpen, GraduationCap, Sparkles, Wand2, Rocket, Heart, Monitor, Wifi } from "lucide-react";
+import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations/FadeIn";
 
 export default function Home() {
   const t = useTranslations("Hero");
@@ -25,31 +26,39 @@ export default function Home() {
         {/* Hero Section */}
         <section className="w-full flex flex-col lg:flex-row items-center justify-between gap-12 py-16 px-4 sm:px-12 max-w-[1400px] mx-auto">
           <div className="flex-1 space-y-6">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-balance leading-tight">
-              {t('title')}
-            </h1>
-            <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
-              {t('subtitle')}
-            </p>
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Button asChild className="bg-[#1D4ED8] hover:bg-blue-600 text-white px-8 py-6 rounded-xl text-lg font-bold">
-                <Link href="/signup">
-                  {t('cta_primary')}
-                </Link>
-              </Button>
-              <Button asChild variant="outline" className="border-white/20 hover:bg-white/10 px-8 py-6 rounded-xl text-lg font-bold">
-                <Link href="/#how-it-works">
-                  {t('cta_secondary')}
-                </Link>
-              </Button>
-            </div>
+            <FadeIn delay={0}>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-balance leading-tight">
+                {t('title')}
+              </h1>
+            </FadeIn>
+            <FadeIn delay={0.15}>
+              <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
+                {t('subtitle')}
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.3}>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <Button asChild className="bg-[#1D4ED8] hover:bg-blue-600 text-white px-8 py-6 rounded-xl text-lg font-bold">
+                  <Link href="/signup">
+                    {t('cta_primary')}
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" className="border-white/20 hover:bg-white/10 px-8 py-6 rounded-xl text-lg font-bold">
+                  <Link href="/#how-it-works">
+                    {t('cta_secondary')}
+                  </Link>
+                </Button>
+              </div>
+            </FadeIn>
 
             {/* Trust Badges */}
-            <div className="flex flex-wrap items-center gap-4 pt-2 text-sm text-white/50">
-              <span className="flex items-center gap-1.5"><Monitor className="w-4 h-4 text-[#FBBF24]" /> 75-inch Smart Screen Ready</span>
-              <span className="flex items-center gap-1.5"><Wifi className="w-4 h-4 text-green-400" /> No Hardware Required</span>
-              <span className="flex items-center gap-1.5"><BookOpen className="w-4 h-4 text-blue-400" /> NCERT Class 6-10</span>
-            </div>
+            <FadeIn delay={0.45}>
+              <div className="flex flex-wrap items-center gap-4 pt-2 text-sm text-white/50">
+                <span className="flex items-center gap-1.5"><Monitor className="w-4 h-4 text-[#FBBF24]" /> 75-inch Smart Screen Ready</span>
+                <span className="flex items-center gap-1.5"><Wifi className="w-4 h-4 text-green-400" /> No Hardware Required</span>
+                <span className="flex items-center gap-1.5"><BookOpen className="w-4 h-4 text-blue-400" /> NCERT Class 6-10</span>
+              </div>
+            </FadeIn>
           </div>
 
           <div className="flex-1 relative w-full h-[400px] flex items-center justify-center">
@@ -115,29 +124,31 @@ export default function Home() {
 
         {/* Feature Grid Section */}
         <section id="features" className="w-full py-16 px-4 sm:px-8 max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <StaggerChildren className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" staggerDelay={0.08}>
             {features.map((feature, idx) => (
-              <div key={idx} className="bg-[#1A233A] border border-white/5 rounded-xl p-5 flex items-start gap-4 hover:bg-[#1E293B] transition-colors">
-                <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center shrink-0">
-                  <feature.icon className="w-5 h-5 text-[#FBBF24]" />
+              <StaggerItem key={idx}>
+                <div className="bg-[#1A233A] border border-white/5 rounded-xl p-5 flex items-start gap-4 hover:bg-[#1E293B] transition-colors h-full">
+                  <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center shrink-0">
+                    <feature.icon className="w-5 h-5 text-[#FBBF24]" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-sm mb-1 text-white/90">{feature.title}</h3>
+                    <p className="text-xs text-white/50 leading-relaxed">{feature.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-sm mb-1 text-white/90">{feature.title}</h3>
-                  <p className="text-xs text-white/50 leading-relaxed">{feature.desc}</p>
-                </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerChildren>
         </section>
 
         {/* How It Works Section */}
         <section id="how-it-works" className="w-full py-20 px-4 sm:px-8 max-w-[1200px] mx-auto">
-          <div className="text-center mb-14">
+          <FadeIn className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-extrabold mb-3">
               How It Works / <span className="text-[#FBBF24]">कैसे काम करता है</span>
             </h2>
             <p className="text-white/60 max-w-xl mx-auto">Three simple steps to transform your classroom</p>
-          </div>
+          </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
@@ -184,7 +195,7 @@ export default function Home() {
 
         {/* Mission Section */}
         <section id="mission" className="w-full py-20 px-4 sm:px-8">
-          <div className="max-w-[1000px] mx-auto">
+          <FadeIn className="max-w-[1000px] mx-auto">
             <div className="relative bg-gradient-to-br from-[#E1A140] to-[#D97706] rounded-3xl p-10 sm:p-14 overflow-hidden">
               <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
@@ -209,7 +220,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-          </div>
+          </FadeIn>
         </section>
 
         {/* Join Now CTA */}

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Link, usePathname } from "@/i18n/routing";
 import { Menu, X, User, LogOut, Settings, HelpCircle } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/lib/supabase";
 import { LanguageToggle } from "./LanguageToggle";
 
@@ -136,8 +137,15 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
+      <AnimatePresence>
       {isOpen && (
-        <div className="md:hidden bg-[#1E3A8A] border-t border-white/10">
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
+          className="md:hidden bg-[#1E3A8A] border-t border-white/10 overflow-hidden"
+        >
           <div className="px-4 pt-2 pb-6 space-y-1">
             {isAuthenticated ? (
               <>
@@ -168,8 +176,9 @@ export default function Navbar() {
               </>
             )}
           </div>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </nav>
   );
 }
