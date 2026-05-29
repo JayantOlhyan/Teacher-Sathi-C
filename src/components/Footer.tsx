@@ -1,9 +1,12 @@
 "use client";
 
 import { Link, usePathname } from "@/i18n/routing";
-import { GraduationCap, Mail, Heart } from "lucide-react";
+import { Mail, Heart } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function Footer() {
+  const t = useTranslations("Footer");
+  const tNav = useTranslations("Nav");
   const pathname = usePathname();
   const hideFooterRoutes = ["/video", "/test", "/quiz", "/admin", "/dashboard"];
   const shouldHide = hideFooterRoutes.some((route) => pathname?.includes(route));
@@ -21,27 +24,27 @@ export default function Footer() {
               <img src="/logo-dark.png" alt="TeacherSathi Logo" className="h-9 w-auto object-contain" />
             </div>
             <p className="text-white/60 text-sm leading-relaxed">
-              AI-powered teaching companion for Indian government school teachers. NCERT Class 6-10.
+              {t("tagline")}
             </p>
             <p className="text-white/40 text-xs">
-              Made with <Heart className="w-3 h-3 inline text-red-400 fill-red-400" /> in India
+              {t("made_in")} <Heart className="w-3 h-3 inline text-red-400 fill-red-400" />
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-sm uppercase tracking-wider text-white/80">Platform</h3>
+            <h3 className="font-semibold text-sm uppercase tracking-wider text-white/80">{t("platform")}</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/#features" className="text-white/60 hover:text-white transition-colors">Features</Link></li>
-              <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors">Pricing</Link></li>
+              <li><Link href="/#features" className="text-white/60 hover:text-white transition-colors">{tNav("features")}</Link></li>
+              <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors">{tNav("pricing")}</Link></li>
               <li><Link href="/#how-it-works" className="text-white/60 hover:text-white transition-colors">How It Works</Link></li>
-              <li><Link href="/login" className="text-white/60 hover:text-white transition-colors">Login</Link></li>
+              <li><Link href="/login" className="text-white/60 hover:text-white transition-colors">{tNav("login")}</Link></li>
             </ul>
           </div>
 
           {/* Resources */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-sm uppercase tracking-wider text-white/80">Resources</h3>
+            <h3 className="font-semibold text-sm uppercase tracking-wider text-white/80">{t("resources")}</h3>
             <ul className="space-y-2 text-sm">
               <li><span className="text-white/60">NCERT Class 6-10</span></li>
               <li><span className="text-white/60">AI Lesson Plans</span></li>
@@ -52,7 +55,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-sm uppercase tracking-wider text-white/80">Contact</h3>
+            <h3 className="font-semibold text-sm uppercase tracking-wider text-white/80">{t("contact")}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="mailto:support@teachersathi.in" className="text-white/60 hover:text-white transition-colors flex items-center gap-2">
@@ -69,8 +72,8 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
-          <p>&copy; {new Date().getFullYear()} TeacherSathi. All rights reserved.</p>
-          <p>NCERT-aligned AI content for Classes 6-10 | Hindi + English</p>
+          <p>&copy; {new Date().getFullYear()} {t("copyright")}</p>
+          <p>{t("bottom_text")}</p>
         </div>
       </div>
     </footer>

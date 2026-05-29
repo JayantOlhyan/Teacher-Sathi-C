@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/Button";
 import { Play, CheckSquare, FileText, Download, BarChart, BookOpen, GraduationCap, Sparkles, Wand2, Rocket, Heart, Monitor, Wifi } from "lucide-react";
 import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations/FadeIn";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   const t = useTranslations("Hero");
   const tHiw = useTranslations("HowItWorks");

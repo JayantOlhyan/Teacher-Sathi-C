@@ -1,13 +1,15 @@
 "use client";
-
+ 
 import { useEffect, useState } from "react";
 import { Link, usePathname } from "@/i18n/routing";
 import { Menu, X, User, LogOut, Settings, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/lib/supabase";
 import { LanguageToggle } from "./LanguageToggle";
-
+import { useTranslations } from "next-intl";
+ 
 export default function Navbar() {
+  const t = useTranslations("Nav");
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -67,17 +69,17 @@ export default function Navbar() {
             {isAuthenticated ? (
               // Authenticated Links
               <>
-                <Link href="/dashboard" className={`hover:text-blue-200 transition-colors ${pathname === "/dashboard" ? "font-bold border-b-2 border-white pb-1" : ""}`}>Dashboard</Link>
-                <Link href="/content/class-10" className={`hover:text-blue-200 transition-colors ${pathname?.includes("/content") ? "font-bold border-b-2 border-white pb-1" : ""}`}>Content Library</Link>
-                <Link href="/dashboard/classes" className="hover:text-blue-200 transition-colors">My Classes</Link>
-                <Link href="/dashboard/reports" className="hover:text-blue-200 transition-colors">Reports</Link>
+                <Link href="/dashboard" className={`hover:text-blue-200 transition-colors ${pathname === "/dashboard" ? "font-bold border-b-2 border-white pb-1" : ""}`}>{t("dashboard")}</Link>
+                <Link href="/content/class-10" className={`hover:text-blue-200 transition-colors ${pathname?.includes("/content") ? "font-bold border-b-2 border-white pb-1" : ""}`}>{t("content_library")}</Link>
+                <Link href="/dashboard/classes" className="hover:text-blue-200 transition-colors">{t("my_classes")}</Link>
+                <Link href="/dashboard/reports" className="hover:text-blue-200 transition-colors">{t("reports")}</Link>
               </>
             ) : (
               // Public Links
               <>
-                <Link href="/#features" className="hover:text-blue-200 transition-colors">Features</Link>
-                <Link href="/pricing" className={`hover:text-blue-200 transition-colors ${pathname === "/pricing" ? "font-bold border-b-2 border-white pb-1" : ""}`}>Pricing</Link>
-                <Link href="/#mission" className="hover:text-blue-200 transition-colors">Mission</Link>
+                <Link href="/#features" className="hover:text-blue-200 transition-colors">{t("features")}</Link>
+                <Link href="/pricing" className={`hover:text-blue-200 transition-colors ${pathname === "/pricing" ? "font-bold border-b-2 border-white pb-1" : ""}`}>{t("pricing")}</Link>
+                <Link href="/#mission" className="hover:text-blue-200 transition-colors">{t("mission")}</Link>
               </>
             )}
           </div>
@@ -95,28 +97,28 @@ export default function Navbar() {
                   <div className="w-7 h-7 bg-white text-[#1D4ED8] rounded-full flex items-center justify-center">
                     <User className="w-4 h-4" />
                   </div>
-                  <span className="text-sm font-medium">Profile</span>
+                  <span className="text-sm font-medium">{t("profile")}</span>
                 </button>
 
                 {/* Profile Dropdown */}
                 {isProfileOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 border border-gray-100 text-gray-800">
                     <Link href="/dashboard/profile" className="flex items-center gap-2 px-4 py-2 hover:bg-gray-50 text-sm">
-                      <Settings className="w-4 h-4 text-gray-500" /> Account Settings
+                      <Settings className="w-4 h-4 text-gray-500" /> {t("account_settings")}
                     </Link>
                     <Link href="#" className="flex items-center gap-2 px-4 py-2 hover:bg-gray-50 text-sm">
-                      <HelpCircle className="w-4 h-4 text-gray-500" /> Help & Support
+                      <HelpCircle className="w-4 h-4 text-gray-500" /> {t("help_support")}
                     </Link>
                     <div className="border-t border-gray-100 my-1"></div>
                     <button onClick={handleSignOut} className="w-full flex items-center gap-2 px-4 py-2 hover:bg-red-50 text-red-600 text-sm font-medium transition-colors">
-                      <LogOut className="w-4 h-4" /> Sign Out
+                      <LogOut className="w-4 h-4" /> {t("sign_out")}
                     </button>
                   </div>
                 )}
               </div>
             ) : (
               <Link href="/login" className="bg-white text-[#1D4ED8] hover:bg-blue-50 px-5 py-2 rounded-lg font-bold text-sm shadow-sm transition-colors">
-                Login / Sign Up
+                {t("login_signup")}
               </Link>
             )}
           </div>
@@ -148,28 +150,28 @@ export default function Navbar() {
           <div className="px-4 pt-2 pb-6 space-y-1">
             {isAuthenticated ? (
               <>
-                <Link href="/dashboard" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">Dashboard</Link>
-                <Link href="/content/class-10" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">Content Library</Link>
-                <Link href="/dashboard/classes" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">My Classes</Link>
-                <Link href="/dashboard/reports" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">Reports</Link>
+                <Link href="/dashboard" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">{t("dashboard")}</Link>
+                <Link href="/content/class-10" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">{t("content_library")}</Link>
+                <Link href="/dashboard/classes" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">{t("my_classes")}</Link>
+                <Link href="/dashboard/reports" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">{t("reports")}</Link>
                 <div className="border-t border-white/10 my-2 pt-2">
                   <Link href="/dashboard/profile" className="flex items-center gap-3 px-3 py-3 rounded-md hover:bg-white/10 font-medium">
-                    <User className="w-5 h-5 opacity-70" /> Profile Settings
+                    <User className="w-5 h-5 opacity-70" /> {t("profile")}
                   </Link>
                   <button onClick={handleSignOut} className="w-full flex items-center gap-3 px-3 py-3 rounded-md hover:bg-red-500/20 text-red-300 font-medium text-left">
-                    <LogOut className="w-5 h-5 opacity-70" /> Sign Out
+                    <LogOut className="w-5 h-5 opacity-70" /> {t("sign_out")}
                   </button>
                 </div>
               </>
             ) : (
               <>
-                <Link href="/#features" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">Features</Link>
-                <Link href="/pricing" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">Pricing</Link>
-                <Link href="/#mission" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">Mission</Link>
+                <Link href="/#features" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">{t("features")}</Link>
+                <Link href="/pricing" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">{t("pricing")}</Link>
+                <Link href="/#mission" className="block px-3 py-3 rounded-md hover:bg-white/10 font-medium">{t("mission")}</Link>
                 <div className="pt-4 mt-2 border-t border-white/10 space-y-3">
                   <LanguageToggle />
                   <Link href="/login" className="block w-full text-center bg-white text-[#1D4ED8] px-4 py-3 rounded-lg font-bold">
-                    Login / Sign Up
+                    {t("login_signup")}
                   </Link>
                 </div>
               </>
