@@ -16,7 +16,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#0B1121] text-white border-t border-white/10">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10">
 
           {/* Brand */}
           <div className="md:col-span-1 space-y-4">
@@ -50,6 +50,17 @@ export default function Footer() {
               <li><span className="text-white/60">AI Lesson Plans</span></li>
               <li><span className="text-white/60">Quiz Generator</span></li>
               <li><span className="text-white/60">Mind Maps</span></li>
+            </ul>
+          </div>
+
+          {/* Accessibility */}
+          <div className="space-y-4">
+            <h3 className="font-semibold text-sm uppercase tracking-wider text-white/80">{t("accessibility")}</h3>
+            <ul className="space-y-2 text-sm">
+              <li><span className="text-white/60 hover:text-white transition-colors cursor-pointer">{t("screen_reader")}</span></li>
+              <li><span className="text-white/60 hover:text-white transition-colors cursor-pointer">{t("high_contrast")}</span></li>
+              <li><span className="text-white/60 hover:text-white transition-colors cursor-pointer">{t("text_to_speech")}</span></li>
+              <li><span className="text-white/60 hover:text-white transition-colors cursor-pointer">{t("font_size")}</span></li>
             </ul>
           </div>
 
