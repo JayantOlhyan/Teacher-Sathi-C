@@ -13,15 +13,11 @@ export function LanguageToggle() {
   const toggleLanguage = () => {
     const nextLocale = locale === "en" ? "hi" : "en";
     
-    // Explicitly set the cookie for next-intl middleware
+    // Set the cookie directly
     document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; SameSite=Lax`;
     
-    // Navigate and force a hard reload to apply the translation immediately
-    router.replace(pathname || "/", {locale: nextLocale});
-    
-    setTimeout(() => {
-      window.location.reload();
-    }, 50);
+    // Force a full page reload to ensure the middleware processes the cookie
+    window.location.reload();
   };
 
   return (
