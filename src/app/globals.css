@@ -25,3 +25,71 @@ body {
     text-wrap: balance;
   }
 }
+
+/* --- Premium Accessibility Styles --- */
+
+/* Light Theme Overrides */
+html.light-theme, html.light-theme body, html.light-theme main {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+html.light-theme .text-white {
+  color: #0f172a !important;
+}
+html.light-theme .text-white\/70, 
+html.light-theme .text-white\/60, 
+html.light-theme .text-white\/50, 
+html.light-theme .text-white\/40 {
+  color: #475569 !important;
+}
+html.light-theme .bg-\[\#0B1121\],
+html.light-theme .bg-\[\#0b1121\] {
+  background-color: #f8fafc !important;
+}
+html.light-theme .bg-\[\#1A233A\],
+html.light-theme .bg-\[\#1a233a\] {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+html.light-theme .border-white\/5,
+html.light-theme .border-white\/10 {
+  border-color: #cbd5e1 !important;
+}
+html.light-theme footer {
+  background-color: #e2e8f0 !important;
+  color: #1e293b !important;
+  border-color: #cbd5e1 !important;
+}
+html.light-theme footer .text-white\/60 {
+  color: #475569 !important;
+}
+html.light-theme footer .text-white\/40 {
+  color: #64748b !important;
+}
+html.light-theme footer h3 {
+  color: #0f172a !important;
+}
+
+/* High Contrast mode */
+html.high-contrast-theme {
+  filter: contrast(1.4) saturate(1.15) !important;
+}
+
+/* Large Font mode */
+html.large-text-theme {
+  font-size: 1.15rem !important;
+}
+
+/* Readable/Dyslexic Font mode */
+html.readable-font-theme, html.readable-font-theme * {
+  font-family: 'Comic Sans MS', 'Outfit', sans-serif !important;
+}
+
+/* Highlight Links */
+html.highlight-links-theme a,
+html.highlight-links-theme button[onClick] {
+  text-decoration: underline !important;
+  font-weight: 800 !important;
+  outline: 2px dashed #f59e0b !important;
+}
+
