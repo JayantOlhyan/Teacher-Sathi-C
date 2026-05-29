@@ -8,7 +8,7 @@
 - [x] **P0-02** — Add `typecheck` npm script (`tsc --noEmit`)
 - [x] **P0-03** — Add `svgrepo.com` to Next.js image remote patterns (login page Google icon broken)
 - [x] **P0-04** — Land LanguageToggle fix (use `@/i18n/routing` instead of `next/navigation`)
-- [ ] **P0-05** — Security audit: verify no API secrets in client-side code
+- [x] **P0-05** — Security audit: verify no API secrets in client-side code
 
 ---
 
