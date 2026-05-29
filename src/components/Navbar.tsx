@@ -58,8 +58,7 @@ export default function Navbar() {
           {/* Logo & Brand */}
           <div className="flex items-center gap-3">
             <Link href={isAuthenticated ? "/dashboard" : "/"} className="flex items-center gap-2 font-bold text-xl tracking-tight">
-              <div className="bg-white text-[#1D4ED8] w-8 h-8 rounded flex items-center justify-center">🎓</div>
-              TeacherSathi
+              <img src="/logo-dark.png" alt="TeacherSathi Logo" className="h-9 w-auto object-contain" />
             </Link>
           </div>
 

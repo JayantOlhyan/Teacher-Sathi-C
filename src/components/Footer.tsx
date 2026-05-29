@@ -17,11 +17,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="md:col-span-1 space-y-4">
-            <div className="flex items-center gap-2 font-bold text-xl">
-              <div className="bg-white text-[#1D4ED8] w-8 h-8 rounded flex items-center justify-center">
-                <GraduationCap className="w-5 h-5" />
-              </div>
-              TeacherSathi
+            <div className="flex items-center gap-2">
+              <img src="/logo-dark.png" alt="TeacherSathi Logo" className="h-9 w-auto object-contain" />
             </div>
             <p className="text-white/60 text-sm leading-relaxed">
               AI-powered teaching companion for Indian government school teachers. NCERT Class 6-10.
