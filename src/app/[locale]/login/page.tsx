@@ -64,9 +64,10 @@ export default function LoginPage() {
 
           <form className="space-y-4">
             <div>
-              <input 
-                type="email" 
-                placeholder="Email" 
+              <input
+                type="email"
+                placeholder="Email"
+                required
                 className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1D4ED8] bg-transparent"
               />
             </div>
@@ -74,6 +75,8 @@ export default function LoginPage() {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
+                required
+                minLength={6}
                 className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1D4ED8] bg-transparent"
               />
               <button
@@ -83,6 +86,11 @@ export default function LoginPage() {
               >
                 {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
               </button>
+            </div>
+            <div className="flex justify-end">
+              <Link href="/login" className="text-sm text-[#1D4ED8] hover:underline font-medium">
+                Forgot password?
+              </Link>
             </div>
             <Button className="w-full bg-[#1D4ED8] hover:bg-[#1e40af] text-white py-6 rounded-lg text-lg">
               Login
