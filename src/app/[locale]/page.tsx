@@ -27,8 +27,8 @@ export default function Home() {
 
       <main className="flex-1 flex flex-col items-center w-full">
         {/* Hero Section */}
-        <section className="w-full flex flex-col lg:flex-row items-center justify-between gap-12 py-16 px-4 sm:px-12 max-w-[1400px] mx-auto">
-          <div className="flex-1 space-y-6">
+        <section className="w-full py-20 px-4 sm:px-12 max-w-[1200px] mx-auto text-center">
+          <div className="max-w-4xl mx-auto space-y-6 flex flex-col items-center">
             <FadeIn delay={0}>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-balance leading-tight">
                 {t('title')}
@@ -40,7 +40,7 @@ export default function Home() {
               </p>
             </FadeIn>
             <FadeIn delay={0.3}>
-              <div className="flex flex-wrap gap-4 pt-4">
+              <div className="flex flex-wrap gap-4 pt-4 justify-center">
                 <Button asChild className="bg-[#1D4ED8] hover:bg-blue-600 text-white px-8 py-6 rounded-xl text-lg font-bold">
                   <Link href="/signup">
                     {t('cta_primary')}
@@ -53,59 +53,15 @@ export default function Home() {
                 </Button>
               </div>
             </FadeIn>
-
+ 
             {/* Trust Badges */}
             <FadeIn delay={0.45}>
-              <div className="flex flex-wrap items-center gap-4 pt-2 text-sm text-white/50">
+              <div className="flex flex-wrap items-center justify-center gap-4 pt-2 text-sm text-white/50">
                 <span className="flex items-center gap-1.5"><Monitor className="w-4 h-4 text-[#FBBF24]" /> 75-inch Smart Screen Ready</span>
                 <span className="flex items-center gap-1.5"><Wifi className="w-4 h-4 text-green-400" /> No Hardware Required</span>
                 <span className="flex items-center gap-1.5"><BookOpen className="w-4 h-4 text-blue-400" /> NCERT Class 6-10</span>
               </div>
             </FadeIn>
-          </div>
-
-          <div className="flex-1 relative w-full h-[400px] flex items-center justify-center">
-            {/* Visuals - Mind Map */}
-            <div className="absolute top-10 left-0 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-2xl z-10 w-[240px] transform -rotate-2">
-              <div className="flex items-center justify-center h-[120px]">
-                <Image src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?q=80&w=300&auto=format&fit=crop" alt="Mind map placeholder" width={200} height={100} className="rounded-md object-cover opacity-80" />
-              </div>
-            </div>
-
-            {/* Visuals - MCQ Quiz */}
-            <div className="absolute top-0 right-10 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-2xl z-20 w-[240px]">
-              <h3 className="text-sm font-semibold mb-3 text-white/80">Class 10: Life Processes</h3>
-              <div className="space-y-2">
-                <p className="text-[10px] text-white/60 mb-2">Q: Which of the following is an autotroph?</p>
-                <div className="bg-white/5 border border-white/10 p-2 rounded-md text-xs flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full border border-white/40"></div>
-                  Fungi
-                </div>
-                <div className="bg-green-500/20 border border-green-500 p-2 rounded-md text-xs flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                    Green Plants
-                  </div>
-                  <CheckSquare className="w-3 h-3 text-green-500" />
-                </div>
-                <div className="bg-white/5 border border-white/10 p-2 rounded-md text-xs flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full border border-white/40"></div>
-                  Human beings
-                </div>
-              </div>
-            </div>
-
-            {/* Visuals - Video */}
-            <div className="absolute bottom-10 right-0 bg-white/10 backdrop-blur-md border border-white/20 p-2 rounded-xl shadow-2xl z-30 w-[260px] transform rotate-2">
-              <div className="relative w-full aspect-video bg-black rounded-lg overflow-hidden flex items-center justify-center">
-                 <Image src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=400&auto=format&fit=crop" alt="Video placeholder" width={260} height={140} className="opacity-70 object-cover" />
-                 <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">
-                       <Play className="w-5 h-5 text-white ml-1" />
-                    </div>
-                 </div>
-              </div>
-            </div>
           </div>
         </section>
 
