@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
-import { Play, CheckSquare, FileText, Download, BarChart, BookOpen, GraduationCap, Sparkles } from "lucide-react";
+import { Play, CheckSquare, FileText, Download, BarChart, BookOpen, GraduationCap, Sparkles, Wand2, Rocket, Heart, Monitor, Wifi } from "lucide-react";
 
 export default function Home() {
   const t = useTranslations("Hero");
@@ -42,6 +42,13 @@ export default function Home() {
                   {t('cta_secondary')}
                 </Link>
               </Button>
+            </div>
+
+            {/* Trust Badges */}
+            <div className="flex flex-wrap items-center gap-4 pt-2 text-sm text-white/50">
+              <span className="flex items-center gap-1.5"><Monitor className="w-4 h-4 text-[#FBBF24]" /> 75-inch Smart Screen Ready</span>
+              <span className="flex items-center gap-1.5"><Wifi className="w-4 h-4 text-green-400" /> No Hardware Required</span>
+              <span className="flex items-center gap-1.5"><BookOpen className="w-4 h-4 text-blue-400" /> NCERT Class 6-10</span>
             </div>
           </div>
 
@@ -120,6 +127,88 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* How It Works Section */}
+        <section id="how-it-works" className="w-full py-20 px-4 sm:px-8 max-w-[1200px] mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-3">
+              How It Works / <span className="text-[#FBBF24]">कैसे काम करता है</span>
+            </h2>
+            <p className="text-white/60 max-w-xl mx-auto">Three simple steps to transform your classroom</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                step: "01",
+                icon: BookOpen,
+                color: "from-blue-500 to-indigo-600",
+                title: "Choose Your Chapter",
+                titleHi: "अध्याय चुनें",
+                desc: "Pick any NCERT chapter from Class 6 to 10. Science, Maths, Hindi, English, Social Science — all covered.",
+              },
+              {
+                step: "02",
+                icon: Wand2,
+                color: "from-purple-500 to-pink-600",
+                title: "AI Generates Content",
+                titleHi: "AI कंटेंट बनाता है",
+                desc: "Videos, quizzes, mind maps, and tests are generated instantly using AI. In Hindi & English.",
+              },
+              {
+                step: "03",
+                icon: Rocket,
+                color: "from-emerald-500 to-teal-600",
+                title: "Teach with Confidence",
+                titleHi: "आत्मविश्वास से पढ़ाएं",
+                desc: "Walk into class with everything ready. Play on the smart screen, take quizzes live, track results.",
+              },
+            ].map((item) => (
+              <div key={item.step} className="relative bg-[#1A233A] border border-white/5 rounded-2xl p-8 text-center group hover:border-white/20 transition-all">
+                <div className="absolute -top-5 left-1/2 -translate-x-1/2">
+                  <div className={`bg-gradient-to-r ${item.color} text-white text-sm font-extrabold px-4 py-1.5 rounded-full shadow-lg`}>
+                    STEP {item.step}
+                  </div>
+                </div>
+                <div className={`w-16 h-16 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center mx-auto mt-4 mb-5 shadow-lg`}>
+                  <item.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-1">{item.title}</h3>
+                <p className="text-[#FBBF24] font-medium text-sm mb-3">{item.titleHi}</p>
+                <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Mission Section */}
+        <section id="mission" className="w-full py-20 px-4 sm:px-8">
+          <div className="max-w-[1000px] mx-auto">
+            <div className="relative bg-gradient-to-br from-[#E1A140] to-[#D97706] rounded-3xl p-10 sm:p-14 overflow-hidden">
+              <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+              <div className="relative z-10">
+                <div className="flex items-center gap-2 mb-6">
+                  <Heart className="w-6 h-6 text-white fill-white" />
+                  <span className="text-white/90 font-semibold uppercase tracking-wider text-sm">Our Mission / हमारा मिशन</span>
+                </div>
+                <blockquote className="text-white text-2xl sm:text-3xl font-bold leading-relaxed mb-6 italic">
+                  &ldquo;Built for my mother — a government school teacher who spends hours preparing lessons after school. TeacherSathi gives her those hours back.&rdquo;
+                </blockquote>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-lg">J</div>
+                  <div>
+                    <p className="text-white font-bold">Jayant Olhyan</p>
+                    <p className="text-white/70 text-sm">Founder, TeacherSathi</p>
+                  </div>
+                </div>
+                <p className="text-white/80 mt-6 leading-relaxed max-w-2xl">
+                  India has 9.6 million teachers in government schools. Most lack access to quality digital resources.
+                  TeacherSathi bridges this gap with AI — making NCERT content accessible, interactive, and ready to teach in seconds.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 

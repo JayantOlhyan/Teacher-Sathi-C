@@ -3,6 +3,7 @@ import { Inter, Noto_Sans_Devanagari } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "../globals.css";
 
 const inter = Inter({
@@ -77,6 +78,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <Navbar />
           {children}
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
