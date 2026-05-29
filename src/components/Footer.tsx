@@ -78,10 +78,21 @@ export default function Footer() {
     }
   };
 
+  const isEn = locale.toLowerCase().startsWith("en");
+  const isHi = locale.toLowerCase().startsWith("hi");
+
   // Language Setter
   const setLanguage = (targetLocale: string) => {
-    if (locale === targetLocale) return;
+    const currentClean = isHi ? "hi" : "en";
+    if (currentClean === targetLocale) return;
+    
+    // Explicitly delete any old cookies at root path
+    document.cookie = "NEXT_LOCALE=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    
+    // Explicitly write the new cookie
     document.cookie = `NEXT_LOCALE=${targetLocale}; path=/; max-age=31536000; SameSite=Lax`;
+    
+    // Reload the page
     window.location.reload();
   };
 
@@ -223,13 +234,13 @@ export default function Footer() {
                 <div className="flex gap-2">
                   <button
                     onClick={() => setLanguage("en")}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${locale === "en" ? "bg-blue-600 text-white" : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"}`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${isEn ? "bg-blue-600 text-white" : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"}`}
                   >
                     English
                   </button>
                   <button
                     onClick={() => setLanguage("hi")}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${locale === "hi" ? "bg-blue-600 text-white" : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"}`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${isHi ? "bg-blue-600 text-white" : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"}`}
                   >
                     हिंदी (Hindi)
                   </button>
