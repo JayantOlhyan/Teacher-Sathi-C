@@ -1,6 +1,6 @@
 "use client";
 
-import { Play, RotateCw, Terminal, Check, X } from "lucide-react";
+import { Play, RotateCw, Terminal, Check, X, ChevronUp } from "lucide-react";
 
 export default function AdminPipelinePage() {
   const jobs = [
@@ -38,7 +38,7 @@ export default function AdminPipelinePage() {
         <div className="flex-1 bg-[#1A1A1A] border border-[#333] rounded-lg p-5">
           <div className="flex justify-between items-center border-b border-[#333] pb-3 mb-4">
             <h2 className="font-bold">Trigger</h2>
-            <ChevronUpIcon className="w-4 h-4 text-[#666]" />
+            <ChevronUp className="w-4 h-4 text-[#666]" />
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
@@ -157,10 +157,3 @@ export default function AdminPipelinePage() {
   );
 }
 
-function ChevronUpIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="m18 15-6-6-6 6"/>
-    </svg>
-  );
-}

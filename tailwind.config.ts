@@ -16,6 +16,20 @@ const config: Config = {
         success: "#16A34A",
         warning: "#D97706",
         danger: "#DC2626",
+        brand: {
+          DEFAULT: "#1D4ED8",
+          dark: "#1e40af",
+          light: "#3B82F6",
+        },
+        warm: {
+          DEFAULT: "#4A3B2C",
+          gold: "#E1A140",
+          yellow: "#FBBF24",
+        },
+        cream: "#F9F9F4",
+        "dark-bg": "#0B1121",
+        "dark-card": "#1E293B",
+        "dark-surface": "#1A233A",
       },
       borderRadius: {
         card: "12px",
