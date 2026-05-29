@@ -3,10 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { Eye, EyeOff, GraduationCap } from "lucide-react";
 
 export default function SignupPage() {
+  const t = useTranslations("Signup");
   const [role, setRole] = useState<"teacher" | "student">("teacher");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -38,9 +40,9 @@ export default function SignupPage() {
         <div className="w-full max-w-[400px] space-y-8">
           <div className="text-center space-y-2">
             <h1 className="text-4xl font-serif text-[#4A3B2C]">
-              शुरू करें! <span className="font-sans font-medium text-[#4A3B2C]">Get started.</span>
+              {t('heading_hi')} <span className="font-sans font-medium text-[#4A3B2C]">{t('heading')}</span>
             </h1>
-            <p className="text-gray-500 text-sm">Create your free TeacherSathi account</p>
+            <p className="text-gray-500 text-sm">{t('subheading')}</p>
           </div>
 
           <div className="flex bg-white rounded-full p-1 border shadow-sm">
@@ -50,7 +52,7 @@ export default function SignupPage() {
               role="tab"
               aria-selected={role === "teacher"}
             >
-              I&apos;m a Teacher
+              {t('role_teacher')}
             </button>
             <button
               onClick={() => setRole("student")}
@@ -58,7 +60,7 @@ export default function SignupPage() {
               role="tab"
               aria-selected={role === "student"}
             >
-              I&apos;m a Student
+              {t('role_student')}
             </button>
           </div>
 
@@ -66,7 +68,7 @@ export default function SignupPage() {
             <div>
               <input
                 type="text"
-                placeholder="Full Name"
+                placeholder={t('name_placeholder')}
                 required
                 minLength={2}
                 className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1D4ED8] bg-transparent"
@@ -75,7 +77,7 @@ export default function SignupPage() {
             <div>
               <input
                 type="email"
-                placeholder="Email"
+                placeholder={t('email_placeholder')}
                 required
                 className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1D4ED8] bg-transparent"
               />
@@ -84,7 +86,7 @@ export default function SignupPage() {
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
-                  placeholder="Password"
+                  placeholder={t('password_placeholder')}
                   required
                   minLength={8}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1D4ED8] bg-transparent"
@@ -97,10 +99,10 @@ export default function SignupPage() {
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
-              <p className="text-xs text-gray-400 mt-1.5 ml-1">At least 8 characters</p>
+              <p className="text-xs text-gray-400 mt-1.5 ml-1">{t('password_hint')}</p>
             </div>
             <Button className="w-full bg-[#1D4ED8] hover:bg-[#1e40af] text-white py-6 rounded-lg text-lg">
-              Create Account
+              {t('create_account')}
             </Button>
           </form>
 
@@ -109,7 +111,7 @@ export default function SignupPage() {
               <div className="w-full border-t border-gray-200"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-[#F9F9F4] text-gray-500">or</span>
+              <span className="px-2 bg-[#F9F9F4] text-gray-500">{t('or')}</span>
             </div>
           </div>
 
@@ -123,13 +125,13 @@ export default function SignupPage() {
               width={24}
               height={24}
             />
-            Sign up with Google
+            {t('google_signup')}
           </Button>
 
           <p className="text-center text-sm text-gray-500">
-            Already have an account?{" "}
+            {t('has_account')}{" "}
             <Link href="/login" className="text-[#1D4ED8] font-medium hover:underline">
-              Login
+              {t('login')}
             </Link>
           </p>
         </div>

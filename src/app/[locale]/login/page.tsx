@@ -3,10 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { Eye, EyeOff, GraduationCap } from "lucide-react";
 
 export default function LoginPage() {
+  const t = useTranslations("Login");
   const [role, setRole] = useState<"teacher" | "student">("teacher");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -39,7 +41,7 @@ export default function LoginPage() {
         <div className="w-full max-w-[400px] space-y-8">
           <div className="text-center space-y-2">
             <h1 className="text-4xl font-serif text-[#4A3B2C]">
-              नमस्ते! <span className="font-sans font-medium text-[#4A3B2C]">Welcome back.</span>
+              {t('greeting_hi')} <span className="font-sans font-medium text-[#4A3B2C]">{t('greeting')}</span>
             </h1>
           </div>
 
@@ -50,7 +52,7 @@ export default function LoginPage() {
               role="tab"
               aria-selected={role === "teacher"}
             >
-              I&apos;m a Teacher 📚
+              {t('role_teacher')} 📚
             </button>
             <button 
               onClick={() => setRole("student")}
@@ -58,7 +60,7 @@ export default function LoginPage() {
               role="tab"
               aria-selected={role === "student"}
             >
-              I&apos;m a Student 🎓
+              {t('role_student')} 🎓
             </button>
           </div>
 
@@ -66,7 +68,7 @@ export default function LoginPage() {
             <div>
               <input
                 type="email"
-                placeholder="Email"
+                placeholder={t('email_placeholder')}
                 required
                 className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1D4ED8] bg-transparent"
               />
@@ -74,7 +76,7 @@ export default function LoginPage() {
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
-                placeholder="Password"
+                placeholder={t('password_placeholder')}
                 required
                 minLength={6}
                 className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1D4ED8] bg-transparent"
@@ -89,11 +91,11 @@ export default function LoginPage() {
             </div>
             <div className="flex justify-end">
               <Link href="/login" className="text-sm text-[#1D4ED8] hover:underline font-medium">
-                Forgot password?
+                {t('forgot_password')}
               </Link>
             </div>
             <Button className="w-full bg-[#1D4ED8] hover:bg-[#1e40af] text-white py-6 rounded-lg text-lg">
-              Login
+              {t('login_button')}
             </Button>
           </form>
 
@@ -102,19 +104,19 @@ export default function LoginPage() {
               <div className="w-full border-t border-gray-200"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-[#F9F9F4] text-gray-500">or</span>
+              <span className="px-2 bg-[#F9F9F4] text-gray-500">{t('or')}</span>
             </div>
           </div>
 
           <Button variant="outline" className="w-full bg-white border-gray-200 hover:bg-gray-50 py-6 rounded-lg text-lg flex items-center justify-center gap-3">
             <Image src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" width={24} height={24} />
-            Google OAuth
+            {t('google_login')}
           </Button>
 
           <p className="text-center text-sm text-gray-500">
-            Don&apos;t have an account?{" "}
+            {t('no_account')}{" "}
             <Link href="/signup" className="text-[#1D4ED8] font-medium hover:underline">
-              Sign Up
+              {t('sign_up')}
             </Link>
           </p>
         </div>

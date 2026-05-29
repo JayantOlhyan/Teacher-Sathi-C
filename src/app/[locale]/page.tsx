@@ -7,6 +7,9 @@ import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations/Fa
 
 export default function Home() {
   const t = useTranslations("Hero");
+  const tHiw = useTranslations("HowItWorks");
+  const tMission = useTranslations("Mission");
+  const tCta = useTranslations("CTA");
 
   const features = [
     { title: "Lesson Planning", icon: FileText, desc: "Prepare comprehensive lessons in minutes." },
@@ -145,9 +148,9 @@ export default function Home() {
         <section id="how-it-works" className="w-full py-20 px-4 sm:px-8 max-w-[1200px] mx-auto">
           <FadeIn className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-extrabold mb-3">
-              How It Works / <span className="text-[#FBBF24]">कैसे काम करता है</span>
+              {tHiw('title')} / <span className="text-[#FBBF24]">{tHiw('title_hi')}</span>
             </h2>
-            <p className="text-white/60 max-w-xl mx-auto">Three simple steps to transform your classroom</p>
+            <p className="text-white/60 max-w-xl mx-auto">{tHiw('subtitle')}</p>
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -155,25 +158,25 @@ export default function Home() {
                 step: "01",
                 icon: BookOpen,
                 color: "from-blue-500 to-indigo-600",
-                title: "Choose Your Chapter",
-                titleHi: "अध्याय चुनें",
-                desc: "Pick any NCERT chapter from Class 6 to 10. Science, Maths, Hindi, English, Social Science — all covered.",
+                titleKey: "step1_title" as const,
+                titleHiKey: "step1_title_hi" as const,
+                descKey: "step1_desc" as const,
               },
               {
                 step: "02",
                 icon: Wand2,
                 color: "from-purple-500 to-pink-600",
-                title: "AI Generates Content",
-                titleHi: "AI कंटेंट बनाता है",
-                desc: "Videos, quizzes, mind maps, and tests are generated instantly using AI. In Hindi & English.",
+                titleKey: "step2_title" as const,
+                titleHiKey: "step2_title_hi" as const,
+                descKey: "step2_desc" as const,
               },
               {
                 step: "03",
                 icon: Rocket,
                 color: "from-emerald-500 to-teal-600",
-                title: "Teach with Confidence",
-                titleHi: "आत्मविश्वास से पढ़ाएं",
-                desc: "Walk into class with everything ready. Play on the smart screen, take quizzes live, track results.",
+                titleKey: "step3_title" as const,
+                titleHiKey: "step3_title_hi" as const,
+                descKey: "step3_desc" as const,
               },
             ].map((item) => (
               <div key={item.step} className="relative bg-[#1A233A] border border-white/5 rounded-2xl p-8 text-center group hover:border-white/20 transition-all">
@@ -185,9 +188,9 @@ export default function Home() {
                 <div className={`w-16 h-16 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center mx-auto mt-4 mb-5 shadow-lg`}>
                   <item.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-1">{item.title}</h3>
-                <p className="text-[#FBBF24] font-medium text-sm mb-3">{item.titleHi}</p>
-                <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="text-xl font-bold mb-1">{tHiw(item.titleKey)}</h3>
+                <p className="text-[#FBBF24] font-medium text-sm mb-3">{tHiw(item.titleHiKey)}</p>
+                <p className="text-white/50 text-sm leading-relaxed">{tHiw(item.descKey)}</p>
               </div>
             ))}
           </div>
@@ -202,21 +205,20 @@ export default function Home() {
               <div className="relative z-10">
                 <div className="flex items-center gap-2 mb-6">
                   <Heart className="w-6 h-6 text-white fill-white" />
-                  <span className="text-white/90 font-semibold uppercase tracking-wider text-sm">Our Mission / हमारा मिशन</span>
+                  <span className="text-white/90 font-semibold uppercase tracking-wider text-sm">{tMission('label')} / {tMission('label_hi')}</span>
                 </div>
                 <blockquote className="text-white text-2xl sm:text-3xl font-bold leading-relaxed mb-6 italic">
-                  &ldquo;Built for my mother — a government school teacher who spends hours preparing lessons after school. TeacherSathi gives her those hours back.&rdquo;
+                  &ldquo;{tMission('quote')}&rdquo;
                 </blockquote>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-lg">J</div>
                   <div>
-                    <p className="text-white font-bold">Jayant Olhyan</p>
-                    <p className="text-white/70 text-sm">Founder, TeacherSathi</p>
+                    <p className="text-white font-bold">{tMission('founder_name')}</p>
+                    <p className="text-white/70 text-sm">{tMission('founder_role')}</p>
                   </div>
                 </div>
                 <p className="text-white/80 mt-6 leading-relaxed max-w-2xl">
-                  India has 9.6 million teachers in government schools. Most lack access to quality digital resources.
-                  TeacherSathi bridges this gap with AI — making NCERT content accessible, interactive, and ready to teach in seconds.
+                  {tMission('description')}
                 </p>
               </div>
             </div>
@@ -227,11 +229,11 @@ export default function Home() {
         <section className="w-full max-w-[1200px] mx-auto px-4 mb-16">
           <div className="bg-[#1D4ED8] rounded-2xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
             <h2 className="text-2xl sm:text-3xl font-bold max-w-xl text-center md:text-left">
-              Empower your teaching with AI-powered NCERT resources today!
+              {tCta('heading')}
             </h2>
             <Button asChild className="bg-[#FBBF24] text-black hover:bg-[#F59E0B] rounded-xl px-10 py-6 text-xl font-bold">
               <Link href="/signup">
-                Join Now
+                {tCta('button')}
               </Link>
             </Button>
           </div>
