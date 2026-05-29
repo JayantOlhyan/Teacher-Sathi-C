@@ -42,7 +42,6 @@ export default function Footer() {
     const handleMouseOver = (e: MouseEvent) => {
       if (!isHoverSpeak) return;
       const target = e.target as HTMLElement;
-      // Read headings and paragraphs
       if (["P", "H1", "H2", "H3", "H4", "H5", "H6", "SPAN", "A", "BUTTON"].includes(target.tagName)) {
         const text = target.innerText || target.textContent;
         if (text) {
@@ -79,10 +78,10 @@ export default function Footer() {
     }
   };
 
-  // Language Toggler
-  const toggleLanguage = () => {
-    const nextLocale = locale === "en" ? "hi" : "en";
-    document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; SameSite=Lax`;
+  // Language Setter
+  const setLanguage = (targetLocale: string) => {
+    if (locale === targetLocale) return;
+    document.cookie = `NEXT_LOCALE=${targetLocale}; path=/; max-age=31536000; SameSite=Lax`;
     window.location.reload();
   };
 
@@ -175,8 +174,8 @@ export default function Footer() {
               <div className="flex items-center gap-2">
                 <Settings className="w-5 h-5 text-blue-400 animate-spin-slow" />
                 <div>
-                  <h2 className="text-lg font-bold tracking-wider uppercase">Accessibility Tools</h2>
-                  <p className="text-[10px] text-white/50">अभिगम्यता उपकरण एवं सेटिंग्स</p>
+                  <h2 className="text-lg font-bold tracking-wider uppercase">{t("access_title")}</h2>
+                  <p className="text-[10px] text-white/50">{t("access_subtitle")}</p>
                 </div>
               </div>
               <button 
@@ -198,8 +197,8 @@ export default function Footer() {
                     {isLight ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-blue-400" />}
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold">Light Mode / लाइट मोड</h3>
-                    <p className="text-[10px] text-white/50">Toggle from Dark to Light appearance</p>
+                    <h3 className="text-sm font-semibold">{t("light_mode")}</h3>
+                    <p className="text-[10px] text-white/50">{t("light_mode_desc")}</p>
                   </div>
                 </div>
                 <button
@@ -210,23 +209,31 @@ export default function Footer() {
                 </button>
               </div>
 
-              {/* Language Switcher (EN/HI) */}
-              <div className="flex items-center justify-between bg-white/5 border border-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors">
+              {/* Language Switcher (Explicit Buttons) */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white/5 border border-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
                     <Globe className="w-4 h-4 text-purple-400" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold">Switch to {locale === "en" ? "Hindi (हिंदी)" : "English (अंग्रेज़ी)"}</h3>
-                    <p className="text-[10px] text-white/50">Change website language / भाषा बदलें</p>
+                    <h3 className="text-sm font-semibold">{t("select_lang")}</h3>
+                    <p className="text-[10px] text-white/50">{t("select_lang_desc")}</p>
                   </div>
                 </div>
-                <button
-                  onClick={toggleLanguage}
-                  className="bg-blue-600 hover:bg-blue-500 text-white font-bold px-3 py-1.5 rounded-lg text-xs tracking-wider uppercase transition-colors"
-                >
-                  {locale === "en" ? "हिंदी" : "EN"}
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setLanguage("en")}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${locale === "en" ? "bg-blue-600 text-white" : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"}`}
+                  >
+                    English
+                  </button>
+                  <button
+                    onClick={() => setLanguage("hi")}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${locale === "hi" ? "bg-blue-600 text-white" : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"}`}
+                  >
+                    हिंदी (Hindi)
+                  </button>
+                </div>
               </div>
 
               {/* High Contrast */}
@@ -236,8 +243,8 @@ export default function Footer() {
                     <Eye className="w-4 h-4 text-green-400" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold">High Contrast / उच्च कंट्रास्ट</h3>
-                    <p className="text-[10px] text-white/50">Increase visual contrast and color sharpness</p>
+                    <h3 className="text-sm font-semibold">{t("high_contrast")}</h3>
+                    <p className="text-[10px] text-white/50">{t("high_contrast_desc")}</p>
                   </div>
                 </div>
                 <button
@@ -255,8 +262,8 @@ export default function Footer() {
                     <Type className="w-4 h-4 text-emerald-400" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold">Increase Text Size / बड़ा फ़ॉन्ट</h3>
-                    <p className="text-[10px] text-white/50">Enlarge all typography on the screen by 15%</p>
+                    <h3 className="text-sm font-semibold">{t("large_text")}</h3>
+                    <p className="text-[10px] text-white/50">{t("large_text_desc")}</p>
                   </div>
                 </div>
                 <button
@@ -274,8 +281,8 @@ export default function Footer() {
                     <Layout className="w-4 h-4 text-cyan-400" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold">Readable Font / सुपाठ्य फ़ॉन्ट</h3>
-                    <p className="text-[10px] text-white/50">Change to highly readable dyslexia-friendly font</p>
+                    <h3 className="text-sm font-semibold">{t("readable_font")}</h3>
+                    <p className="text-[10px] text-white/50">{t("readable_font_desc")}</p>
                   </div>
                 </div>
                 <button
@@ -293,8 +300,8 @@ export default function Footer() {
                     <Eye className="w-4 h-4 text-amber-400" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold">Highlight Links / लिंक्स को हाइलाइट करें</h3>
-                    <p className="text-[10px] text-white/50">Add underlines and contrast borders to all links</p>
+                    <h3 className="text-sm font-semibold">{t("highlight_links")}</h3>
+                    <p className="text-[10px] text-white/50">{t("highlight_links_desc")}</p>
                   </div>
                 </div>
                 <button
@@ -312,8 +319,8 @@ export default function Footer() {
                     <Volume2 className="w-4 h-4 text-rose-400" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold">Text-to-Speech / बोलकर पढ़ें</h3>
-                    <p className="text-[10px] text-white/50">Hover over any text on screen to read it aloud</p>
+                    <h3 className="text-sm font-semibold">{t("text_to_speech")}</h3>
+                    <p className="text-[10px] text-white/50">{t("text_to_speech_desc")}</p>
                   </div>
                 </div>
                 <button
@@ -330,7 +337,6 @@ export default function Footer() {
             <div className="mt-6 border-t border-white/10 pt-4 flex justify-between items-center text-xs">
               <button 
                 onClick={() => {
-                  // Reset all classes
                   document.documentElement.classList.remove("light-theme", "high-contrast-theme", "large-text-theme", "readable-font-theme", "highlight-links-theme");
                   setIsLight(false);
                   setIsContrast(false);
@@ -341,13 +347,13 @@ export default function Footer() {
                 }}
                 className="text-red-400 hover:text-red-300 font-semibold transition-colors"
               >
-                Reset Settings / रीसेट करें
+                {t("reset")}
               </button>
               <button 
                 onClick={() => setIsAccessOpen(false)}
                 className="bg-white/10 hover:bg-white/15 px-4 py-2 border border-white/10 rounded-xl transition-all font-semibold"
               >
-                Done / संपन्न
+                {t("done")}
               </button>
             </div>
           </div>
