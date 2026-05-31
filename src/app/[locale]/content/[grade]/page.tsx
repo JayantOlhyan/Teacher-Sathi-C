@@ -33,20 +33,20 @@ export default function ClassContentPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] font-sans pb-20 overflow-x-hidden">
+    <div className="min-h-screen bg-cream font-sans pb-20 overflow-x-hidden">
       <div className="max-w-7xl mx-auto pt-16 px-4">
         
         <div className="text-center space-y-6 mb-16">
-          <h1 className="text-3xl sm:text-4xl font-serif text-[#4A3B2C]">
-            Choose Your Chapter / <span className="font-sans font-medium text-[#4A3B2C]">अध्याय चुनें</span>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-ink">
+            Choose Your Chapter / <span className="font-sans font-medium text-ink">अध्याय चुनें</span>
           </h1>
           
-          <div className="flex flex-wrap justify-center gap-6 text-[#4A3B2C]">
+          <div className="flex flex-wrap justify-center gap-6 text-ink-2">
             {classes.map((cls) => (
               <button 
                 key={cls}
                 onClick={() => setActiveClass(cls)}
-                className={`pb-1 text-lg transition-colors ${activeClass === cls ? "border-b-2 border-[#1D4ED8] font-semibold text-[#1D4ED8]" : "hover:text-[#1D4ED8]"}`}
+                className={`pb-1 text-lg transition-colors font-semibold ${activeClass === cls ? "border-b-2 border-brand text-brand" : "hover:text-brand"}`}
               >
                 {cls}
               </button>

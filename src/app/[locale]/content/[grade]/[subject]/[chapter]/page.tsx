@@ -1,10 +1,26 @@
 "use client";
 
+import { useEffect } from "react";
+import { useParams } from "next/navigation";
+import { Link } from "@/i18n/routing";
 import { Play, CheckSquare, MessageSquare, Download, Lock, FileText, BrainCircuit, MonitorSmartphone, Clock } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export default function ChapterHubPage() {
-  
+  const params = useParams();
+  const grade = params.grade as string;
+  const subject = params.subject as string;
+  const chapter = params.chapter as string;
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const cleanSubject = subject.charAt(0).toUpperCase() + subject.slice(1);
+      const cleanChapter = chapter.replace("chapter-", "");
+      localStorage.setItem("last_sathi_view", window.location.pathname);
+      localStorage.setItem("last_sathi_view_title", `${cleanSubject} (Ch. ${cleanChapter})`);
+    }
+  }, [grade, subject, chapter]);
+
   const resources = [
     {
       title: "AI Chapter Video",
@@ -16,6 +32,7 @@ export default function ChapterHubPage() {
       cta: "Watch Video",
       badge: "18 min",
       locked: false,
+      href: `/content/${grade}/${subject}/${chapter}/video`,
     },
     {
       title: "Quick MCQ Quiz",
@@ -26,6 +43,7 @@ export default function ChapterHubPage() {
       borderColor: "border-purple-500",
       cta: "Take Quiz",
       locked: false,
+      href: `/content/${grade}/${subject}/${chapter}/quiz`,
     },
     {
       title: "Short & Long Q&A bank",
@@ -56,6 +74,7 @@ export default function ChapterHubPage() {
       borderColor: "border-red-500",
       cta: "Start Test",
       locked: true,
+      href: `/content/${grade}/${subject}/${chapter}/test`,
     },
     {
       title: "Mind Map",
@@ -91,32 +110,32 @@ export default function ChapterHubPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] font-sans pb-20">
+    <div className="min-h-screen bg-cream font-sans pb-20">
       <div className="max-w-5xl mx-auto pt-16 px-4">
         
         {/* Breadcrumb */}
-        <div className="text-sm text-gray-500 mb-6 flex gap-2">
+        <div className="text-sm text-ink-3 mb-6 flex gap-2 font-semibold">
           <span>Class 10</span> &gt; <span>Science</span> &gt; <span>Chapter 10</span>
         </div>
 
         {/* Header */}
         <div className="mb-10">
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#0F172A] leading-tight mb-2">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-ink leading-tight mb-2">
             Light — Reflection & Refraction
           </h1>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#334155] leading-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold text-brand-secondary leading-tight">
             प्रकाश — परावर्तन तथा अपवर्तन
           </h2>
           
           <div className="flex flex-wrap items-center gap-4 mt-6">
-            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border shadow-sm text-sm font-medium">
-              <Clock className="w-4 h-4 text-gray-500" />
+            <div className="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-line shadow-sm text-sm font-semibold text-ink-2">
+              <Clock className="w-4 h-4 text-brand" />
               Total Study Time: 2h 40min
             </div>
-            <Button className="bg-[#2563EB] text-white rounded-lg flex items-center gap-2">
+            <Button className="bg-[#16A34A] hover:bg-cta-hover text-white px-6 py-2.5 rounded-xl font-bold shadow-brand flex items-center gap-2 transition-all">
               <Download className="w-4 h-4" /> Download Full Pack
             </Button>
-            <Button variant="outline" className="bg-white border-gray-300 text-gray-700 rounded-lg flex items-center gap-2">
+            <Button variant="outline" className="bg-white border-brand/20 hover:bg-brand/5 text-brand px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all">
               <MonitorSmartphone className="w-4 h-4" /> Smart Screen Mode
             </Button>
           </div>
@@ -161,9 +180,18 @@ export default function ChapterHubPage() {
               )}
 
               {/* Action Button */}
-              <button className="w-full mt-4 py-2 rounded-lg border border-white/20 text-white text-sm font-medium hover:bg-white/10 transition-colors relative z-10">
-                {res.cta}
-              </button>
+              {res.href && !res.locked ? (
+                <Link 
+                  href={res.href} 
+                  className="w-full mt-4 py-2 rounded-lg border border-white/20 text-white text-sm font-medium hover:bg-white/10 transition-colors relative z-10 text-center block"
+                >
+                  {res.cta}
+                </Link>
+              ) : (
+                <button className="w-full mt-4 py-2 rounded-lg border border-white/20 text-white text-sm font-medium hover:bg-white/10 transition-colors relative z-10">
+                  {res.cta}
+                </button>
+              )}
             </div>
           ))}
         </div>

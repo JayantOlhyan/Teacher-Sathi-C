@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Sans_Devanagari } from "next/font/google";
+import { Plus_Jakarta_Sans, Mukta } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import Navbar from "@/components/Navbar";
@@ -8,15 +8,15 @@ import "../globals.css";
 
 export const dynamic = "force-dynamic";
 
-const inter = Inter({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-plus-jakarta-sans",
 });
 
-const notoSansDevanagari = Noto_Sans_Devanagari({
-  weight: ["400", "500", "600", "700"],
+const mukta = Mukta({
+  weight: ["400", "500", "600", "700", "800"],
   subsets: ["devanagari"],
-  variable: "--font-noto-sans-devanagari",
+  variable: "--font-mukta",
 });
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
@@ -74,7 +74,7 @@ export default async function RootLayout({
         <meta name="google-site-verification" content="-a0wyjaTybF3gldEtwwHLwq_ChLau7TLls8Q1KFF7lE" />
       </head>
       <body
-        className={`${inter.variable} ${notoSansDevanagari.variable} font-sans antialiased bg-background text-foreground`}
+        className={`${plusJakartaSans.variable} ${mukta.variable} font-sans antialiased bg-background text-foreground`}
         suppressHydrationWarning
       >
         <NextIntlClientProvider messages={messages}>

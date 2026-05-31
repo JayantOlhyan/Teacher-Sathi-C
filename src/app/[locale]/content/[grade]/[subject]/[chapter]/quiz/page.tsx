@@ -1,35 +1,50 @@
 "use client";
 
+import { useEffect } from "react";
+import { useParams } from "next/navigation";
 import { ArrowRight, Check, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export default function QuickQuizPage() {
+  const params = useParams();
+  const grade = params.grade as string;
+  const subject = params.subject as string;
+  const chapter = params.chapter as string;
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && grade && subject && chapter) {
+      const cleanSubject = subject.charAt(0).toUpperCase() + subject.slice(1);
+      const cleanChapter = chapter.replace("chapter-", "");
+      localStorage.setItem("last_sathi_view", window.location.pathname);
+      localStorage.setItem("last_sathi_view_title", `AI Quiz - ${cleanSubject} (Ch. ${cleanChapter})`);
+    }
+  }, [grade, subject, chapter]);
 
   return (
-    <div className="min-h-screen bg-[#10142A] text-white font-sans flex flex-col items-center py-10 px-4">
+    <div className="min-h-screen bg-dark-bg text-[#F4F8F1] font-sans flex flex-col items-center py-10 px-4">
       
       {/* Top Progress Bar */}
-      <div className="w-full max-w-4xl flex items-center justify-between text-sm font-medium mb-2">
-        <span className="text-gray-300">Progress 23%</span>
-        <span className="text-gray-300">Q 7 of 30</span>
-        <div className="bg-[#1E293B] border border-white/10 px-3 py-1 rounded flex items-center gap-2">
-          <span className="text-gray-400">Live score</span>
+      <div className="w-full max-w-4xl flex items-center justify-between text-sm font-semibold mb-2">
+        <span className="text-[#B9C7B6]">Progress 23%</span>
+        <span className="text-[#B9C7B6]">Q 7 of 30</span>
+        <div className="bg-[#14532D] border border-white/10 px-3 py-1 rounded-xl flex items-center gap-2">
+          <span className="text-[#B9C7B6]">Live score</span>
           <span className="flex items-center text-success"><span className="font-bold mr-0.5">7</span><Check className="w-3 h-3 stroke-[3]" /></span>
           <span className="flex items-center text-danger"><span className="font-bold mr-0.5">2</span><X className="w-3 h-3 stroke-[3]" /></span>
         </div>
       </div>
-      <div className="w-full max-w-4xl h-2 bg-[#1E293B] rounded-full overflow-hidden mb-16">
-        <div className="h-full bg-[#3B82F6] rounded-full w-[23%]"></div>
+      <div className="w-full max-w-4xl h-2 bg-[#14532D] rounded-full overflow-hidden mb-16">
+        <div className="h-full bg-[#16A34A] rounded-full w-[23%]"></div>
       </div>
 
       {/* Quiz Card */}
       <div className="w-full max-w-3xl relative">
         {/* Floating Q Badge */}
-        <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#5B50A1] text-white text-xl font-bold px-6 py-2 rounded-full border-4 border-[#10142A] z-10 shadow-lg">
+        <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-brand text-white text-xl font-bold px-6 py-2 rounded-full border-4 border-dark-bg z-10 shadow-lg">
           Q07
         </div>
 
-        <div className="bg-[#1C203B] border border-white/5 rounded-3xl p-8 sm:p-12 shadow-2xl relative">
+        <div className="bg-[#14532D] border border-white/5 rounded-3xl p-8 sm:p-12 shadow-2xl relative">
           
           {/* Difficulty Badge */}
           <div className="absolute top-6 right-8 bg-[#D97706]/20 text-[#D97706] text-xs font-bold px-3 py-1 rounded-full">
@@ -79,10 +94,10 @@ export default function QuickQuizPage() {
           </div>
 
           <div className="flex items-center justify-between gap-6 pt-6 border-t border-white/10">
-            <p className="text-gray-400 text-sm flex-1 leading-relaxed">
+            <p className="text-[#B9C7B6] text-sm flex-1 leading-relaxed">
               The angle of incidence always equals the angle of reflection, measured from the normal.
             </p>
-            <Button className="bg-[#3B82F6] hover:bg-[#2563EB] text-white px-6 py-6 rounded-xl text-lg font-bold shrink-0 flex items-center gap-2 shadow-lg">
+            <Button className="bg-[#16A34A] hover:bg-[#128A3E] text-white px-6 py-6 rounded-xl text-lg font-bold shrink-0 flex items-center gap-2 shadow-brand">
               Next Question <ArrowRight className="w-5 h-5" />
             </Button>
           </div>

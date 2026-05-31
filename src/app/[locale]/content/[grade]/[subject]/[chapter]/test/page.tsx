@@ -1,10 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
 import { Flag, Lock, ArrowRight, ArrowLeft } from "lucide-react";
 
 export default function ChapterTestPage() {
   const [selectedOption, setSelectedOption] = useState<string | null>("B");
+  const params = useParams();
+  const grade = params.grade as string;
+  const subject = params.subject as string;
+  const chapter = params.chapter as string;
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && grade && subject && chapter) {
+      const cleanSubject = subject.charAt(0).toUpperCase() + subject.slice(1);
+      const cleanChapter = chapter.replace("chapter-", "");
+      localStorage.setItem("last_sathi_view", window.location.pathname);
+      localStorage.setItem("last_sathi_view_title", `AI Test - ${cleanSubject} (Ch. ${cleanChapter})`);
+    }
+  }, [grade, subject, chapter]);
 
   // Grid items 1-25
   const grid = Array.from({ length: 25 }, (_, i) => {
@@ -17,12 +31,12 @@ export default function ChapterTestPage() {
   });
 
   return (
-    <div className="min-h-screen bg-[#F5F7F9] font-sans text-gray-900 flex flex-col">
+    <div className="min-h-screen bg-cream font-sans text-ink flex flex-col">
       
       {/* Top Navigation Bar */}
-      <header className="bg-white border-b border-gray-200 px-6 sm:px-8 py-4 flex items-center justify-between sticky top-0 z-50">
+      <header className="bg-white border-b border-line px-6 sm:px-8 py-4 flex items-center justify-between sticky top-0 z-50 shadow-sm">
         <div className="flex-1">
-          <h1 className="text-xl sm:text-2xl font-bold text-[#1E293B]">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-ink">
             Class 10 Science — <br className="sm:hidden" /> Chapter Test (Hard)
           </h1>
         </div>
@@ -40,10 +54,10 @@ export default function ChapterTestPage() {
           <div className="hidden sm:grid grid-cols-6 gap-1 border p-1 rounded bg-white">
             {grid.map((item) => {
               let classes = "w-6 h-6 flex items-center justify-center text-[10px] font-bold rounded-sm border ";
-              if (item.state === "answered") classes += "bg-[#2563EB] text-white border-[#2563EB]";
-              else if (item.state === "current") classes += "bg-blue-50 text-[#2563EB] border-[#2563EB]";
-              else if (item.state === "flagged") classes += "bg-white text-gray-600 border-gray-200 relative";
-              else classes += "bg-white text-gray-600 border-gray-200";
+              if (item.state === "answered") classes += "bg-brand text-white border-brand";
+              else if (item.state === "current") classes += "bg-brand-tint text-brand border-brand";
+              else if (item.state === "flagged") classes += "bg-white text-ink-3 border-line relative";
+              else classes += "bg-white text-ink-3 border-line";
 
               return (
                 <div key={item.num} className={classes}>
@@ -58,14 +72,14 @@ export default function ChapterTestPage() {
 
       {/* Main Content */}
       <main className="flex-1 flex items-center justify-center p-4 py-12">
-        <div className="w-full max-w-2xl bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden flex flex-col">
+        <div className="w-full max-w-2xl bg-white border border-line rounded-3xl shadow-card overflow-hidden flex flex-col">
           
           <div className="p-8 sm:p-10 flex-1">
             <div className="flex justify-between items-start mb-8">
-              <h2 className="text-xl sm:text-2xl font-medium text-gray-900 leading-relaxed">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-ink leading-relaxed">
                 Which lens is used to correct myopia?
               </h2>
-              <div className="w-3 h-3 rounded-full bg-red-500 shrink-0 mt-2"></div>
+              <div className="w-3 h-3 rounded-full bg-danger shrink-0 mt-2"></div>
             </div>
 
             <div className="space-y-3">
@@ -78,7 +92,7 @@ export default function ChapterTestPage() {
                 <button
                   key={opt.id}
                   onClick={() => setSelectedOption(opt.id)}
-                  className={`w-full flex items-center gap-4 p-4 rounded-lg border text-left transition-colors ${selectedOption === opt.id ? "border-[#2563EB] bg-blue-50" : "border-gray-200 hover:bg-gray-50 bg-white"}`}
+                  className={`w-full flex items-center gap-4 p-4 rounded-xl border text-left transition-colors font-semibold ${selectedOption === opt.id ? "border-brand bg-brand-tint text-brand" : "border-line hover:bg-brand-tint/30 bg-white text-ink"}`}
                 >
                   <span className="w-6 font-semibold text-gray-800">{opt.id}</span>
                   <span className="text-gray-700">{opt.text}</span>
@@ -94,11 +108,11 @@ export default function ChapterTestPage() {
           </div>
 
           {/* Bottom Controls */}
-          <div className="grid grid-cols-2 border-t border-gray-200 divide-x divide-gray-200">
-            <button className="flex items-center justify-center gap-2 py-4 text-gray-600 hover:bg-gray-50 font-medium">
+          <div className="grid grid-cols-2 border-t border-line divide-x divide-line">
+            <button className="flex items-center justify-center gap-2 py-4 text-ink-2 hover:bg-brand-tint/20 font-bold transition-all">
               <ArrowLeft className="w-4 h-4" /> PREV
             </button>
-            <button className="flex items-center justify-center gap-2 py-4 text-gray-900 hover:bg-gray-50 font-medium">
+            <button className="flex items-center justify-center gap-2 py-4 text-ink hover:bg-brand-tint/20 font-bold transition-all">
               NEXT <ArrowRight className="w-4 h-4" />
             </button>
           </div>
