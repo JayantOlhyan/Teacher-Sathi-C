@@ -10,8 +10,11 @@ export default function Footer() {
   const tNav = useTranslations("Nav");
   const locale = useLocale();
   const pathname = usePathname();
-  const hideFooterRoutes = ["/video", "/test", "/quiz", "/admin", "/dashboard"];
-  const shouldHide = hideFooterRoutes.some((route) => pathname?.includes(route));
+  const hideFooterExactOrEnd = ["/video", "/test", "/quiz"];
+  const hideFooterStart = ["/admin", "/dashboard"];
+  const shouldHide = 
+    hideFooterExactOrEnd.some((route) => pathname === route || pathname?.endsWith(route)) ||
+    hideFooterStart.some((route) => pathname?.startsWith(route));
 
   // Accessibility Panel States
   const [isAccessOpen, setIsAccessOpen] = useState(false);
@@ -78,12 +81,9 @@ export default function Footer() {
     }
   };
 
-  const isEn = locale.toLowerCase().startsWith("en");
-  const isHi = locale.toLowerCase().startsWith("hi");
-
   // Language Setter
   const setLanguage = (targetLocale: string) => {
-    const currentClean = isHi ? "hi" : "en";
+    const currentClean = locale.toLowerCase().startsWith("hi") ? "hi" : "en";
     if (currentClean === targetLocale) return;
     
     // Explicitly delete any old cookies at root path
@@ -96,17 +96,20 @@ export default function Footer() {
     window.location.reload();
   };
 
+  const isEn = locale.toLowerCase().startsWith("en");
+  const isHi = locale.toLowerCase().startsWith("hi");
+
   if (shouldHide) return null;
 
   return (
-    <footer className="bg-[#0B1121] text-white border-t border-white/10 relative">
+    <footer className="bg-[#0A2A17] text-white border-t border-white/10 relative">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
 
           {/* Brand */}
           <div className="md:col-span-1 space-y-4">
             <div className="flex items-center gap-2">
-              <img src="/logo-dark.png" alt="TeacherSathi Logo" className="h-9 w-auto object-contain" />
+              <img src="/logo-horizontal-on-dark.png" alt="TeacherSathi Logo" className="h-9 w-auto object-contain" />
             </div>
             <p className="text-white/60 text-sm leading-relaxed">
               {t("tagline")}
@@ -131,10 +134,10 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold text-sm uppercase tracking-wider text-white/80">{t("resources")}</h3>
             <ul className="space-y-2 text-sm">
-              <li><span className="text-white/60">NCERT Class 6-10</span></li>
-              <li><span className="text-white/60">AI Lesson Plans</span></li>
-              <li><span className="text-white/60">Quiz Generator</span></li>
-              <li><span className="text-white/60">Mind Maps</span></li>
+              <li><Link href="/resources/ncert" className="text-white/60 hover:text-white transition-colors">NCERT Class 6-10</Link></li>
+              <li><Link href="/resources/lesson-plans" className="text-white/60 hover:text-white transition-colors">AI Lesson Plans</Link></li>
+              <li><Link href="/resources/quiz-generator" className="text-white/60 hover:text-white transition-colors">Quiz Generator</Link></li>
+              <li><Link href="/resources/mind-maps" className="text-white/60 hover:text-white transition-colors">Mind Maps</Link></li>
             </ul>
           </div>
 
@@ -176,14 +179,14 @@ export default function Footer() {
       {isAccessOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-fadeIn">
           <div 
-            className="w-full max-w-lg bg-[#0F172A] border border-white/15 rounded-2xl shadow-2xl p-6 relative text-white"
+            className="w-full max-w-lg bg-[#14532D] border border-white/10 rounded-2xl shadow-2xl p-6 relative text-white"
             role="dialog"
             aria-modal="true"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
               <div className="flex items-center gap-2">
-                <Settings className="w-5 h-5 text-blue-400 animate-spin-slow" />
+                <Settings className="w-5 h-5 text-emerald-400 animate-spin-slow" />
                 <div>
                   <h2 className="text-lg font-bold tracking-wider uppercase">{t("access_title")}</h2>
                   <p className="text-[10px] text-white/50">{t("access_subtitle")}</p>
@@ -199,13 +202,13 @@ export default function Footer() {
             </div>
 
             {/* List of Toggles */}
-            <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-1">
+            <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-1 text-white">
               
               {/* Theme Selector (Light/Dark) */}
               <div className="flex items-center justify-between bg-white/5 border border-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                    {isLight ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-blue-400" />}
+                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                    {isLight ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-emerald-400" />}
                   </div>
                   <div>
                     <h3 className="text-sm font-semibold">{t("light_mode")}</h3>
@@ -214,7 +217,7 @@ export default function Footer() {
                 </div>
                 <button
                   onClick={() => toggleClass(isLight, setIsLight, "light-theme")}
-                  className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${isLight ? 'bg-blue-600' : 'bg-gray-700'}`}
+                  className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${isLight ? 'bg-emerald-600' : 'bg-emerald-900'}`}
                 >
                   <div className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-300 ${isLight ? 'translate-x-5' : 'translate-x-0'}`} />
                 </button>
@@ -223,7 +226,7 @@ export default function Footer() {
               {/* Language Switcher (Explicit Buttons) */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white/5 border border-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
                     <Globe className="w-4 h-4 text-purple-400" />
                   </div>
                   <div>
@@ -234,13 +237,13 @@ export default function Footer() {
                 <div className="flex gap-2">
                   <button
                     onClick={() => setLanguage("en")}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${isEn ? "bg-blue-600 text-white" : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"}`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${isEn ? "bg-emerald-600 text-white" : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"}`}
                   >
                     English
                   </button>
                   <button
                     onClick={() => setLanguage("hi")}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${isHi ? "bg-blue-600 text-white" : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"}`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${isHi ? "bg-emerald-600 text-white" : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"}`}
                   >
                     हिंदी (Hindi)
                   </button>
@@ -250,7 +253,7 @@ export default function Footer() {
               {/* High Contrast */}
               <div className="flex items-center justify-between bg-white/5 border border-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
                     <Eye className="w-4 h-4 text-green-400" />
                   </div>
                   <div>
@@ -260,7 +263,7 @@ export default function Footer() {
                 </div>
                 <button
                   onClick={() => toggleClass(isContrast, setIsContrast, "high-contrast-theme")}
-                  className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${isContrast ? 'bg-blue-600' : 'bg-gray-700'}`}
+                  className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${isContrast ? 'bg-emerald-600' : 'bg-emerald-900'}`}
                 >
                   <div className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-300 ${isContrast ? 'translate-x-5' : 'translate-x-0'}`} />
                 </button>
@@ -269,7 +272,7 @@ export default function Footer() {
               {/* Increase Font Size */}
               <div className="flex items-center justify-between bg-white/5 border border-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
                     <Type className="w-4 h-4 text-emerald-400" />
                   </div>
                   <div>
@@ -279,7 +282,7 @@ export default function Footer() {
                 </div>
                 <button
                   onClick={() => toggleClass(isLargeText, setIsLargeText, "large-text-theme")}
-                  className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${isLargeText ? 'bg-blue-600' : 'bg-gray-700'}`}
+                  className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${isLargeText ? 'bg-emerald-600' : 'bg-emerald-900'}`}
                 >
                   <div className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-300 ${isLargeText ? 'translate-x-5' : 'translate-x-0'}`} />
                 </button>
@@ -288,7 +291,7 @@ export default function Footer() {
               {/* Readable Font */}
               <div className="flex items-center justify-between bg-white/5 border border-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
                     <Layout className="w-4 h-4 text-cyan-400" />
                   </div>
                   <div>
@@ -298,7 +301,7 @@ export default function Footer() {
                 </div>
                 <button
                   onClick={() => toggleClass(isReadableFont, setIsReadableFont, "readable-font-theme")}
-                  className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${isReadableFont ? 'bg-blue-600' : 'bg-gray-700'}`}
+                  className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${isReadableFont ? 'bg-emerald-600' : 'bg-emerald-900'}`}
                 >
                   <div className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-300 ${isReadableFont ? 'translate-x-5' : 'translate-x-0'}`} />
                 </button>
@@ -307,7 +310,7 @@ export default function Footer() {
               {/* Highlight Links */}
               <div className="flex items-center justify-between bg-white/5 border border-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
                     <Eye className="w-4 h-4 text-amber-400" />
                   </div>
                   <div>
@@ -317,7 +320,7 @@ export default function Footer() {
                 </div>
                 <button
                   onClick={() => toggleClass(isHighlightLinks, setIsHighlightLinks, "highlight-links-theme")}
-                  className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${isHighlightLinks ? 'bg-blue-600' : 'bg-gray-700'}`}
+                  className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${isHighlightLinks ? 'bg-emerald-600' : 'bg-emerald-900'}`}
                 >
                   <div className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-300 ${isHighlightLinks ? 'translate-x-5' : 'translate-x-0'}`} />
                 </button>
@@ -326,7 +329,7 @@ export default function Footer() {
               {/* Speech Mode (Hover TTS) */}
               <div className="flex items-center justify-between bg-white/5 border border-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
                     <Volume2 className="w-4 h-4 text-rose-400" />
                   </div>
                   <div>
@@ -336,7 +339,7 @@ export default function Footer() {
                 </div>
                 <button
                   onClick={() => setIsHoverSpeak(!isHoverSpeak)}
-                  className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${isHoverSpeak ? 'bg-blue-600' : 'bg-gray-700'}`}
+                  className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${isHoverSpeak ? 'bg-emerald-600' : 'bg-emerald-900'}`}
                 >
                   <div className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-300 ${isHoverSpeak ? 'translate-x-5' : 'translate-x-0'}`} />
                 </button>
@@ -356,7 +359,7 @@ export default function Footer() {
                   setIsHighlightLinks(false);
                   setIsHoverSpeak(false);
                 }}
-                className="text-red-400 hover:text-red-300 font-semibold transition-colors"
+                className="text-red-300 hover:text-red-200 font-semibold transition-colors"
               >
                 {t("reset")}
               </button>

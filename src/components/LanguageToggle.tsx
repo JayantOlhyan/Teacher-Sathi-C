@@ -1,13 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { useRouter, usePathname } from "@/i18n/routing";
 import { useLocale } from "next-intl";
 import { Button } from "./ui/Button";
 
 export function LanguageToggle() {
-  const router = useRouter();
-  const pathname = usePathname();
   const locale = useLocale();
 
   const toggleLanguage = () => {

@@ -53,17 +53,17 @@ export default function PricingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] font-sans pb-20">
+    <div className="min-h-screen bg-cream bg-[radial-gradient(#C3CFBC_1px,transparent_1px)] [background-size:16px_16px] font-sans pb-20">
       <main className="max-w-4xl mx-auto pt-16 px-4">
         <div className="text-center space-y-6 mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-[#111827]">
             Choose Your Plan / <span className="font-sans">अपनी योजना चुनें</span>
           </h1>
           
-          <div className="inline-flex bg-white rounded-full p-1 border shadow-sm" role="tablist">
+          <div className="inline-flex bg-white rounded-full p-1 border border-line shadow-sm" role="tablist">
             <button 
               onClick={() => setAudience("teachers")}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${audience === "teachers" ? "bg-[#1D4ED8] text-white shadow-md" : "text-gray-500 hover:text-gray-900"}`}
+              className={`px-6 py-2 rounded-full text-sm font-semibold transition-colors ${audience === "teachers" ? "bg-brand text-white shadow-md" : "text-ink-3 hover:text-ink"}`}
               role="tab"
               aria-selected={audience === "teachers"}
             >
@@ -71,7 +71,7 @@ export default function PricingPage() {
             </button>
             <button 
               onClick={() => setAudience("students")}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${audience === "students" ? "bg-[#1D4ED8] text-white shadow-md" : "text-gray-500 hover:text-gray-900"}`}
+              className={`px-6 py-2 rounded-full text-sm font-semibold transition-colors ${audience === "students" ? "bg-brand text-white shadow-md" : "text-ink-3 hover:text-ink"}`}
               role="tab"
               aria-selected={audience === "students"}
             >
@@ -82,8 +82,8 @@ export default function PricingPage() {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-16 relative">
           {/* Free Plan */}
-          <div className="bg-[#FAF9F6] border-2 border-dashed border-gray-300 rounded-2xl p-8 relative shadow-sm hover:border-[#1D4ED8]/30 transition-colors">
-            <div className="absolute top-4 right-4 border-2 border-green-600 text-green-600 font-bold px-3 py-1 rounded text-sm transform rotate-12 opacity-80">
+          <div className="bg-[#FAF9F6] border-2 border-dashed border-line-strong rounded-2xl p-8 relative shadow-sm hover:border-brand/30 transition-colors">
+            <div className="absolute top-4 right-4 border-2 border-[#16A34A] text-[#16A34A] font-extrabold px-3 py-1 rounded text-sm transform rotate-12 opacity-80">
               FREE
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">{plans.free.title}</h2>
@@ -111,7 +111,7 @@ export default function PricingPage() {
           </div>
 
           {/* Pro Plan */}
-          <div className="bg-[#1D4ED8] rounded-2xl p-8 relative shadow-2xl text-white transform scale-105 z-10">
+          <div className="bg-brand rounded-2xl p-8 relative shadow-2xl text-white transform scale-105 z-10">
             <div className="absolute -top-4 -right-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold px-8 py-2 text-sm transform rotate-45 shadow-md">
               BEST VALUE
             </div>
@@ -124,7 +124,7 @@ export default function PricingPage() {
             <ul className="space-y-4 mb-8">
               {plans.pro.features.map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-white">
-                  <div className="bg-yellow-400 rounded-full p-1"><Check className="w-4 h-4 text-[#1D4ED8]" /></div>
+                  <div className="bg-yellow-400 rounded-full p-1"><Check className="w-4 h-4 text-brand" /></div>
                   <span className="text-sm font-medium">{item}</span>
                 </li>
               ))}
@@ -141,8 +141,8 @@ export default function PricingPage() {
 
         {/* FAQs */}
         <div className="max-w-2xl mx-auto mb-16">
-          <h2 className="text-2xl font-bold text-center mb-8 flex items-center justify-center gap-2">
-            <HelpCircle className="text-[#1D4ED8]" /> Frequently Asked Questions
+          <h2 className="text-2xl font-bold text-center mb-8 flex items-center justify-center gap-2 text-ink">
+            <HelpCircle className="text-brand" /> Frequently Asked Questions
           </h2>
           <div className="space-y-3">
             {faqs.map((faq, idx) => (
