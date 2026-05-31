@@ -51,7 +51,9 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       description: 'Aapka Teaching Companion',
     },
     icons: {
-      icon: '/favicon.ico',
+      icon: '/favicon-green.png',
+      shortcut: '/favicon-green.png',
+      apple: '/favicon-green.png',
     },
     verification: {
       google: '-a0wyjaTybF3gldEtwwHLwq_ChLau7TLls8Q1KFF7lE',
