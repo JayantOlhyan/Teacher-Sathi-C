@@ -45,10 +45,10 @@ export default function LoginPage() {
             </h1>
           </div>
 
-          <div className="flex bg-white rounded-full p-1 border shadow-sm">
+          <div className="flex bg-white rounded-full p-1 border border-line shadow-sm">
             <button 
               onClick={() => setRole("teacher")}
-              className={`flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 text-sm font-medium transition-colors ${role === "teacher" ? "bg-[#1D4ED8] text-white" : "text-gray-500 hover:text-gray-900"}`}
+              className={`flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 text-sm font-semibold transition-colors ${role === "teacher" ? "bg-brand text-white shadow-sm" : "text-ink-3 hover:text-ink"}`}
               role="tab"
               aria-selected={role === "teacher"}
             >
@@ -56,7 +56,7 @@ export default function LoginPage() {
             </button>
             <button 
               onClick={() => setRole("student")}
-              className={`flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 text-sm font-medium transition-colors ${role === "student" ? "bg-[#1D4ED8] text-white" : "text-gray-500 hover:text-gray-900"}`}
+              className={`flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 text-sm font-semibold transition-colors ${role === "student" ? "bg-brand text-white shadow-sm" : "text-ink-3 hover:text-ink"}`}
               role="tab"
               aria-selected={role === "student"}
             >
@@ -70,7 +70,7 @@ export default function LoginPage() {
                 type="email"
                 placeholder={t('email_placeholder')}
                 required
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1D4ED8] bg-transparent"
+                className="w-full px-4 py-3 rounded-lg border border-line focus:outline-none focus:ring-2 focus:ring-brand bg-transparent text-ink font-medium"
               />
             </div>
             <div className="relative">
@@ -79,7 +79,7 @@ export default function LoginPage() {
                 placeholder={t('password_placeholder')}
                 required
                 minLength={6}
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1D4ED8] bg-transparent"
+                className="w-full px-4 py-3 rounded-lg border border-line focus:outline-none focus:ring-2 focus:ring-brand bg-transparent text-ink font-medium"
               />
               <button
                 type="button"
@@ -90,11 +90,11 @@ export default function LoginPage() {
               </button>
             </div>
             <div className="flex justify-end">
-              <Link href="/login" className="text-sm text-[#1D4ED8] hover:underline font-medium">
+              <Link href="/login" className="text-sm text-brand hover:underline font-semibold">
                 {t('forgot_password')}
               </Link>
             </div>
-            <Button className="w-full bg-[#1D4ED8] hover:bg-[#1e40af] text-white py-6 rounded-lg text-lg">
+            <Button className="w-full bg-[#16A34A] hover:bg-cta-hover text-white py-6 rounded-lg text-lg font-bold shadow-brand">
               {t('login_button')}
             </Button>
           </form>
@@ -113,9 +113,9 @@ export default function LoginPage() {
             {t('google_login')}
           </Button>
 
-          <p className="text-center text-sm text-gray-500">
+          <p className="text-center text-sm text-ink-3">
             {t('no_account')}{" "}
-            <Link href="/signup" className="text-[#1D4ED8] font-medium hover:underline">
+            <Link href="/signup" className="text-brand font-semibold hover:underline">
               {t('sign_up')}
             </Link>
           </p>
