@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Link, usePathname } from "@/i18n/routing";
-import { Mail, Heart, Settings, X, Eye, Type, Volume2, Globe, Moon, Sun, Layout } from "lucide-react";
+import { Mail, Heart, Settings, X, Eye, Type, Volume2, Globe, Moon, Sun, Layout, Phone } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 
 export default function Footer() {
@@ -146,8 +146,13 @@ export default function Footer() {
             <h3 className="font-semibold text-sm uppercase tracking-wider text-white/80">{t("contact")}</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="mailto:support@teachersathi.in" className="text-white/60 hover:text-white transition-colors flex items-center gap-2">
-                  <Mail className="w-4 h-4" /> support@teachersathi.in
+                <a href="mailto:jayantolhyan@khelclan.online" className="text-white/60 hover:text-white transition-colors flex items-center gap-2">
+                  <Mail className="w-4 h-4" /> jayantolhyan@khelclan.online
+                </a>
+              </li>
+              <li>
+                <a href="tel:+919667344125" className="text-white/60 hover:text-white transition-colors flex items-center gap-2">
+                  <Phone className="w-4 h-4" /> +91 96673 44125
                 </a>
               </li>
             </ul>

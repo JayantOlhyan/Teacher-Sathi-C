@@ -32,9 +32,12 @@ export default function Error({
           <div className="mt-6 p-4 bg-warm-sunken rounded-2xl border border-line text-sm text-ink-2">
             <p className="mb-1 font-bold text-ink">Need help? / मदद चाहिए?</p>
             <p>If the problem persists, please contact support:</p>
-            <a href="mailto:support@teachersathi.in" className="text-brand font-semibold hover:underline block mt-1">
-              support@teachersathi.in
+            <a href="mailto:jayantolhyan@khelclan.online" className="text-brand font-semibold hover:underline block mt-1">
+              jayantolhyan@khelclan.online
             </a>
+            <span className="text-brand font-semibold block mt-1">
+              📞 +91 96673 44125
+            </span>
           </div>
         </div>
         <Button 
