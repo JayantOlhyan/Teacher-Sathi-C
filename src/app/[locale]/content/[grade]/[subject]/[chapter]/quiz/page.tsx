@@ -2,11 +2,13 @@
 
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 import { ArrowRight, Check, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export default function QuickQuizPage() {
   const params = useParams();
+  const router = useRouter();
   const grade = params.grade as string;
   const subject = params.subject as string;
   const chapter = params.chapter as string;
@@ -20,20 +22,34 @@ export default function QuickQuizPage() {
     }
   }, [grade, subject, chapter]);
 
+  const handleQuit = () => {
+    if (typeof window !== "undefined" && window.confirm("Are you sure you want to quit this quiz? Your current score will not be saved.")) {
+      router.push(`/content/${grade}/${subject}/${chapter}`);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-dark-bg text-[#F4F8F1] font-sans flex flex-col items-center py-10 px-4">
       
-      {/* Top Progress Bar */}
-      <div className="w-full max-w-4xl flex items-center justify-between text-sm font-semibold mb-2">
-        <span className="text-[#B9C7B6]">Progress 23%</span>
-        <span className="text-[#B9C7B6]">Q 7 of 30</span>
-        <div className="bg-[#14532D] border border-white/10 px-3 py-1 rounded-xl flex items-center gap-2">
-          <span className="text-[#B9C7B6]">Live score</span>
-          <span className="flex items-center text-success"><span className="font-bold mr-0.5">7</span><Check className="w-3 h-3 stroke-[3]" /></span>
-          <span className="flex items-center text-danger"><span className="font-bold mr-0.5">2</span><X className="w-3 h-3 stroke-[3]" /></span>
+      {/* Top Header Bar with Quit Button */}
+      <div className="w-full max-w-4xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <button 
+          onClick={handleQuit}
+          className="flex items-center justify-center gap-2 text-[#B9C7B6] hover:text-white hover:bg-white/10 transition-all font-bold text-sm bg-white/5 border border-white/10 px-4 py-2.5 rounded-xl cursor-pointer w-fit active:scale-95"
+        >
+          <X className="w-4 h-4" /> Quit Quiz
+        </button>
+        <div className="flex items-center justify-between sm:justify-end gap-6 text-sm font-semibold flex-1">
+          <span className="text-[#B9C7B6]">Progress 23%</span>
+          <span className="text-[#B9C7B6]">Q 7 of 30</span>
+          <div className="bg-[#14532D] border border-white/10 px-3 py-1 rounded-xl flex items-center gap-2">
+            <span className="text-[#B9C7B6]">Live score</span>
+            <span className="flex items-center text-success"><span className="font-bold mr-0.5">7</span><Check className="w-3 h-3 stroke-[3]" /></span>
+            <span className="flex items-center text-danger"><span className="font-bold mr-0.5">2</span><X className="w-3 h-3 stroke-[3]" /></span>
+          </div>
         </div>
       </div>
-      <div className="w-full max-w-4xl h-2 bg-[#14532D] rounded-full overflow-hidden mb-16">
+      <div className="w-full max-w-4xl h-2 bg-[#14532D] rounded-full overflow-hidden mb-12">
         <div className="h-full bg-[#16A34A] rounded-full w-[23%]"></div>
       </div>
 
