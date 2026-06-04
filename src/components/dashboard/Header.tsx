@@ -19,7 +19,9 @@ export function Header() {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [profileName, setProfileName] = useState("Teacher");
   const [schoolName, setSchoolName] = useState("Government Senior Secondary School");
-  const [profileRole, setProfileRole] = useState("teacher");
+  const [schoolCode, setSchoolCode] = useState("UDISE-060201");
+  const [profilePost, setProfilePost] = useState("tgt");
+  const [profileSubject, setProfileSubject] = useState("science");
   const [profileLang, setProfileLang] = useState("en");
 
   const [isHelpOpen, setIsHelpOpen] = useState(false);
@@ -41,14 +43,20 @@ export function Header() {
     // Retrieve custom session entries from localStorage
     const storedName = localStorage.getItem("last_sathi_teacher_name");
     const storedSchool = localStorage.getItem("last_sathi_school_name");
-    const storedRole = localStorage.getItem("last_sathi_role");
+    const storedSchoolCode = localStorage.getItem("last_sathi_school_code");
+    const storedPost = localStorage.getItem("last_sathi_post_type");
+    const storedSubject = localStorage.getItem("last_sathi_subject");
+    const storedLang = localStorage.getItem("last_sathi_language");
     
     if (storedName) {
       setDisplayName(storedName);
       setProfileName(storedName);
     }
     if (storedSchool) setSchoolName(storedSchool);
-    if (storedRole) setProfileRole(storedRole);
+    if (storedSchoolCode) setSchoolCode(storedSchoolCode);
+    if (storedPost) setProfilePost(storedPost);
+    if (storedSubject) setProfileSubject(storedSubject);
+    if (storedLang) setProfileLang(storedLang);
 
     if (!supabase) return;
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -101,7 +109,10 @@ export function Header() {
 
     localStorage.setItem("last_sathi_teacher_name", profileName);
     localStorage.setItem("last_sathi_school_name", schoolName);
-    localStorage.setItem("last_sathi_role", profileRole);
+    localStorage.setItem("last_sathi_school_code", schoolCode);
+    localStorage.setItem("last_sathi_post_type", profilePost);
+    localStorage.setItem("last_sathi_subject", profileSubject);
+    localStorage.setItem("last_sathi_language", profileLang);
     
     setDisplayName(profileName);
     setIsAccountOpen(false);
@@ -326,14 +337,43 @@ export function Header() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase">Role Type</label>
+                  <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase">School Code</label>
+                  <input 
+                    type="text" 
+                    required
+                    placeholder="School Code"
+                    value={schoolCode}
+                    onChange={(e) => setSchoolCode(e.target.value)}
+                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand text-sm font-semibold"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase">Subject Taught</label>
                   <select 
-                    value={profileRole}
-                    onChange={(e) => setProfileRole(e.target.value)}
+                    value={profileSubject}
+                    onChange={(e) => setProfileSubject(e.target.value)}
                     className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand text-sm font-semibold bg-white cursor-pointer"
                   >
-                    <option value="teacher">Teacher 📚</option>
-                    <option value="student">Student 🎓</option>
+                    <option value="science">Science 🔬</option>
+                    <option value="mathematics">Mathematics 📐</option>
+                    <option value="english">English 📚</option>
+                    <option value="social_science">Social Science 🌍</option>
+                    <option value="hindi">Hindi ✍️</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase">Teacher Post</label>
+                  <select 
+                    value={profilePost}
+                    onChange={(e) => setProfilePost(e.target.value)}
+                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand text-sm font-semibold bg-white cursor-pointer"
+                  >
+                    <option value="tgt">TGT (Trained Graduate) 📚</option>
+                    <option value="pgt">PGT (Post Graduate) 🎓</option>
+                    <option value="prt">PRT (Primary Teacher) ✏️</option>
                   </select>
                 </div>
                 <div>
