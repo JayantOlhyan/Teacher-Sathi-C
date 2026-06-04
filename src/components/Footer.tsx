@@ -104,10 +104,10 @@ export default function Footer() {
   return (
     <footer className="bg-[#0A2A17] text-white border-t border-white/10 relative">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
 
           {/* Brand */}
-          <div className="md:col-span-1 space-y-4">
+          <div className="space-y-4">
             <div className="flex items-center gap-2">
               <img src="/logo-horizontal-on-dark.png" alt="TeacherSathi Logo" className="h-9 w-auto object-contain" />
             </div>
@@ -139,6 +139,27 @@ export default function Footer() {
               <li><Link href="/resources/quiz-generator" className="text-white/60 hover:text-white transition-colors">Quiz Generator</Link></li>
               <li><Link href="/resources/mind-maps" className="text-white/60 hover:text-white transition-colors">Mind Maps</Link></li>
             </ul>
+          </div>
+
+          {/* Meet the Team */}
+          <div className="space-y-4">
+            <h3 className="font-semibold text-sm uppercase tracking-wider text-white/80">{t("meet_the_team")}</h3>
+            <div className="space-y-3">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-[10px] font-bold text-emerald-400">JO</div>
+                <div>
+                  <p className="text-xs font-semibold text-white/95 leading-tight">Jayant Olhyan</p>
+                  <p className="text-[9px] text-white/40 font-bold uppercase tracking-widest mt-0.5">Founder / Lead</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-[10px] font-bold text-emerald-400">TM</div>
+                <div>
+                  <p className="text-xs font-semibold text-white/95 leading-tight">Team Member</p>
+                  <p className="text-[9px] text-white/40 font-bold uppercase tracking-widest mt-0.5">Developer / Role</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Contact */}
