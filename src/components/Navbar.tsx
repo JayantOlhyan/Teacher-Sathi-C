@@ -52,9 +52,12 @@ export default function Navbar() {
     const storedSubject = localStorage.getItem("last_sathi_subject");
     const storedLang = localStorage.getItem("last_sathi_language");
     
-    if (storedName) {
+    if (storedName && storedName.trim() !== "" && storedName !== "null" && storedName !== "undefined") {
       setDisplayName(storedName);
       setProfileName(storedName);
+    } else {
+      setDisplayName("Teacher");
+      setProfileName("Teacher");
     }
     if (storedSchool) setSchoolName(storedSchool);
     if (storedSchoolCode) setSchoolCode(storedSchoolCode);
@@ -168,6 +171,10 @@ export default function Navbar() {
     setIsProfileOpen(false);
   }, [pathname]);
 
+  const firstName = (displayName && displayName.trim() !== "" && displayName !== "null" && displayName !== "undefined") 
+    ? displayName.trim().split(" ")[0] 
+    : "Teacher";
+
   if (shouldHide) return null;
 
   const handleSignOut = async () => {
@@ -229,7 +236,7 @@ export default function Navbar() {
                     <div className="w-7 h-7 bg-brand text-white rounded-full flex items-center justify-center">
                       <User className="w-4 h-4" />
                     </div>
-                    <span className="text-sm font-semibold">{displayName.split(" ")[0]}</span>
+                    <span className="text-sm font-semibold">{firstName}</span>
                   </button>
 
                   {/* Profile Dropdown */}

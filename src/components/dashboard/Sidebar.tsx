@@ -17,9 +17,10 @@ function SidebarNav() {
 
   return (
     <>
-      <div className="p-6 flex items-center gap-3 font-bold text-xl mb-6 border-b border-white/10">
-        <div className="w-8 h-8 bg-white text-[#14532D] rounded flex items-center justify-center">🎓</div>
-        TeacherSathi
+      <div className="p-6 mb-6 border-b border-white/10 flex items-center justify-start">
+        <Link href="/dashboard" className="hover:opacity-95 transition-opacity">
+          <img src="/logo-horizontal-on-dark.png" alt="TeacherSathi Logo" className="h-9 w-auto object-contain" />
+        </Link>
       </div>
       <nav className="flex-1 px-4 space-y-3">
         {navItems.map((item) => {

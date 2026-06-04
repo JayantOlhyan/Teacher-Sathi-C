@@ -48,15 +48,28 @@ export function Header() {
     const storedSubject = localStorage.getItem("last_sathi_subject");
     const storedLang = localStorage.getItem("last_sathi_language");
     
-    if (storedName) {
+    if (storedName && storedName.trim() !== "" && storedName !== "null" && storedName !== "undefined") {
       setDisplayName(storedName);
       setProfileName(storedName);
+    } else {
+      setDisplayName("Teacher");
+      setProfileName("Teacher");
     }
-    if (storedSchool) setSchoolName(storedSchool);
-    if (storedSchoolCode) setSchoolCode(storedSchoolCode);
-    if (storedPost) setProfilePost(storedPost);
-    if (storedSubject) setProfileSubject(storedSubject);
-    if (storedLang) setProfileLang(storedLang);
+    if (storedSchool && storedSchool.trim() !== "" && storedSchool !== "null" && storedSchool !== "undefined") {
+      setSchoolName(storedSchool);
+    }
+    if (storedSchoolCode && storedSchoolCode.trim() !== "" && storedSchoolCode !== "null" && storedSchoolCode !== "undefined") {
+      setSchoolCode(storedSchoolCode);
+    }
+    if (storedPost && storedPost.trim() !== "" && storedPost !== "null" && storedPost !== "undefined") {
+      setProfilePost(storedPost);
+    }
+    if (storedSubject && storedSubject.trim() !== "" && storedSubject !== "null" && storedSubject !== "undefined") {
+      setProfileSubject(storedSubject);
+    }
+    if (storedLang && storedLang.trim() !== "" && storedLang !== "null" && storedLang !== "undefined") {
+      setProfileLang(storedLang);
+    }
 
     if (!supabase) return;
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -93,7 +106,9 @@ export function Header() {
     }
   }, [toastMessage]);
 
-  const firstName = displayName.split(" ")[0];
+  const firstName = (displayName && displayName.trim() !== "" && displayName !== "null" && displayName !== "undefined") 
+    ? displayName.trim().split(" ")[0] 
+    : "Teacher";
 
   const handleSync = () => {
     setIsSyncing(true);
@@ -147,7 +162,7 @@ export function Header() {
   ];
 
   return (
-    <header className="flex items-center justify-between px-4 sm:px-8 py-3.5 sm:py-5 bg-white/50 backdrop-blur-md border-b border-white/20 sticky top-0 z-20">
+    <header className="flex items-center justify-between pl-16 pr-4 sm:pr-8 md:px-8 py-3.5 sm:py-5 bg-white/50 backdrop-blur-md border-b border-white/20 sticky top-0 z-20">
       
       {/* Toast Notification */}
       {toastMessage && (
@@ -258,7 +273,7 @@ export function Header() {
           {showProfileMenu && (
             <div className="absolute right-0 mt-3 w-52 bg-white border border-gray-150 rounded-2xl shadow-xl py-2 z-50 animate-fadeIn text-sm text-gray-700">
               <div className="px-4 py-2 border-b border-gray-100 mb-1.5 bg-gray-50/50">
-                <p className="font-extrabold text-gray-800 truncate">{displayName}</p>
+                <p className="font-extrabold text-gray-800 truncate">{displayName || "Teacher"}</p>
                 <p className="text-[10px] text-gray-400 font-bold tracking-wider uppercase mt-0.5">Teacher Session</p>
               </div>
               <button 
