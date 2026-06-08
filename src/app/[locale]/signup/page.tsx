@@ -40,7 +40,7 @@ export default function SignupPage() {
         <div className="w-full max-w-[400px] space-y-8">
           <div className="text-center space-y-2">
             <h1 className="text-4xl font-serif text-[#4A3B2C]">
-              {t('heading_hi')} <span className="font-sans font-medium text-[#4A3B2C]">{t('heading')}</span>
+              {t('heading')}
             </h1>
             <p className="text-gray-500 text-sm">{t('subheading')}</p>
           </div>

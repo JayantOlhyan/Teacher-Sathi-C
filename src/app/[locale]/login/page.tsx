@@ -41,7 +41,7 @@ export default function LoginPage() {
         <div className="w-full max-w-[400px] space-y-8">
           <div className="text-center space-y-2">
             <h1 className="text-4xl font-serif text-[#4A3B2C]">
-              {t('greeting_hi')} <span className="font-sans font-medium text-[#4A3B2C]">{t('greeting')}</span>
+              {t('greeting')}
             </h1>
           </div>
 

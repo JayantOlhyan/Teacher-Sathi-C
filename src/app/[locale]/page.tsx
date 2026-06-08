@@ -157,7 +157,7 @@ export default function Home() {
         <section id="how-it-works" className="w-full py-20 px-4 sm:px-8 max-w-[1200px] mx-auto">
           <FadeIn className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-extrabold mb-3 text-ink">
-              {tHiw('title')} / <span className="text-brand-secondary font-medium">{tHiw('title_hi')}</span>
+              {tHiw('title')}
             </h2>
             <p className="text-ink-3 max-w-xl mx-auto">{tHiw('subtitle')}</p>
           </FadeIn>
@@ -168,7 +168,6 @@ export default function Home() {
                 icon: BookOpen,
                 color: "bg-[#258088]",
                 titleKey: "step1_title" as const,
-                titleHiKey: "step1_title_hi" as const,
                 descKey: "step1_desc" as const,
               },
               {
@@ -176,7 +175,6 @@ export default function Home() {
                 icon: Wand2,
                 color: "bg-[#D95B2A]",
                 titleKey: "step2_title" as const,
-                titleHiKey: "step2_title_hi" as const,
                 descKey: "step2_desc" as const,
               },
               {
@@ -184,7 +182,6 @@ export default function Home() {
                 icon: Rocket,
                 color: "bg-[#16A34A]",
                 titleKey: "step3_title" as const,
-                titleHiKey: "step3_title_hi" as const,
                 descKey: "step3_desc" as const,
               },
             ].map((item) => (
@@ -197,8 +194,7 @@ export default function Home() {
                 <div className={`w-16 h-16 ${item.color} text-white rounded-2xl flex items-center justify-center mx-auto mt-4 mb-5 shadow-sm`}>
                   <item.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-1 text-ink">{tHiw(item.titleKey)}</h3>
-                <p className="text-brand font-semibold text-sm mb-3">{tHiw(item.titleHiKey)}</p>
+                <h3 className="text-xl font-bold mb-3 text-ink">{tHiw(item.titleKey)}</h3>
                 <p className="text-ink-3 text-sm leading-relaxed">{tHiw(item.descKey)}</p>
               </div>
             ))}
@@ -214,7 +210,7 @@ export default function Home() {
               <div className="relative z-10 text-white">
                 <div className="flex items-center gap-2 mb-6">
                   <Heart className="w-6 h-6 text-white fill-white" />
-                  <span className="text-white/90 font-semibold uppercase tracking-wider text-sm">{tMission('label')} / {tMission('label_hi')}</span>
+                  <span className="text-white/90 font-semibold uppercase tracking-wider text-sm">{tMission('label')}</span>
                 </div>
                 <blockquote className="text-white text-2xl sm:text-3xl font-bold leading-relaxed mb-6 italic">
                   &ldquo;{tMission('quote')}&rdquo;
