@@ -104,7 +104,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#0A2A17] text-white border-t border-white/10 relative">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10">
 
           {/* Brand */}
           <div className="space-y-4">
@@ -127,7 +127,6 @@ export default function Footer() {
               <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors">{tNav("pricing")}</Link></li>
               <li><Link href="/#how-it-works" className="text-white/60 hover:text-white transition-colors">How It Works</Link></li>
               <li><Link href="/login" className="text-white/60 hover:text-white transition-colors">{tNav("login")}</Link></li>
-              <li><Link href="/support" className="text-white/60 hover:text-white transition-colors">{t("support_sitemap")}</Link></li>
             </ul>
           </div>
 
@@ -139,6 +138,18 @@ export default function Footer() {
               <li><Link href="/resources/lesson-plans" className="text-white/60 hover:text-white transition-colors">AI Lesson Plans</Link></li>
               <li><Link href="/resources/quiz-generator" className="text-white/60 hover:text-white transition-colors">Quiz Generator</Link></li>
               <li><Link href="/resources/mind-maps" className="text-white/60 hover:text-white transition-colors">Mind Maps</Link></li>
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div className="space-y-4">
+            <h3 className="font-bold text-sm uppercase tracking-widest text-[#A3E635]">{t("support_heading")}</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/support" className="text-white/60 hover:text-white transition-colors">{t("help_center_faq")}</Link></li>
+              <li><Link href="/support" className="text-white/60 hover:text-white transition-colors">{t("contact_support")}</Link></li>
+              <li><a href="#" className="text-white/60 hover:text-white transition-colors">{t("terms_of_use")}</a></li>
+              <li><a href="#" className="text-white/60 hover:text-white transition-colors">{t("privacy_policy")}</a></li>
+              <li><Link href="/support" className="text-white/60 hover:text-white transition-colors">{t("sitemap")}</Link></li>
             </ul>
           </div>
 
