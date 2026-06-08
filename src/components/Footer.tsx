@@ -127,6 +127,7 @@ export default function Footer() {
               <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors">{tNav("pricing")}</Link></li>
               <li><Link href="/#how-it-works" className="text-white/60 hover:text-white transition-colors">How It Works</Link></li>
               <li><Link href="/login" className="text-white/60 hover:text-white transition-colors">{tNav("login")}</Link></li>
+              <li><Link href="/support" className="text-white/60 hover:text-white transition-colors">{t("support_sitemap")}</Link></li>
             </ul>
           </div>
 

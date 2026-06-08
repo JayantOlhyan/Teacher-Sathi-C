@@ -105,6 +105,7 @@
     "resources": "Resources",
     "contact": "Contact",
     "meet_the_team": "Meet the Team",
+    "support_sitemap": "Support & Sitemap",
     "copyright": "TeacherSathi. All rights reserved.",
     "bottom_text": "NCERT-aligned AI content for Classes 6-10 | Hindi + English",
     "access_title": "Accessibility Tools",
@@ -159,5 +160,23 @@
     "contact_support": "If the problem persists, please contact support:",
     "try_again": "Try Again",
     "try_again_hi": "पुनः प्रयास करें"
+  },
+  "Support": {
+    "title": "Help Center & Sitemap",
+    "subtitle": "Search for features, guides, or navigate directly to any page across TeacherSathi.",
+    "search_placeholder": "Search pages, resources, or FAQs...",
+    "no_results": "No pages or FAQs match your search.",
+    "contact_title": "Still need help?",
+    "contact_desc": "Send us a message and our support team will get back to you within 24 hours.",
+    "contact_submit": "Send Message",
+    "contact_name": "Full Name",
+    "contact_email": "Email Address",
+    "contact_message": "How can we help you?",
+    "categories": {
+      "platform": "Platform & Pages",
+      "resources": "AI Resource Generators",
+      "library": "NCERT Library (Science)",
+      "dashboard": "Teacher Dashboard"
+    }
   }
 }
