@@ -146,9 +146,9 @@ export default function Footer() {
             <h3 className="font-bold text-sm uppercase tracking-widest text-[#A3E635]">{t("support_heading")}</h3>
             <ul className="space-y-2 text-sm">
               <li><Link href="/support" className="text-white/60 hover:text-white transition-colors">{t("help_center_faq")}</Link></li>
-              <li><Link href="/support" className="text-white/60 hover:text-white transition-colors">{t("contact_support")}</Link></li>
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">{t("terms_of_use")}</a></li>
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">{t("privacy_policy")}</a></li>
+              <li><Link href="/support/contact" className="text-white/60 hover:text-white transition-colors">{t("contact_support")}</Link></li>
+              <li><Link href="/terms" className="text-white/60 hover:text-white transition-colors">{t("terms_of_use")}</Link></li>
+              <li><Link href="/privacy" className="text-white/60 hover:text-white transition-colors">{t("privacy_policy")}</Link></li>
               <li><Link href="/support" className="text-white/60 hover:text-white transition-colors">{t("sitemap")}</Link></li>
             </ul>
           </div>
