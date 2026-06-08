@@ -110,17 +110,17 @@ export default function SupportPage() {
   };
 
   return (
-    <div className="min-h-screen bg-cream text-ink font-sans transition-colors duration-200 py-12 px-4 sm:px-8">
-      <div className="max-w-[1200px] mx-auto space-y-12">
+    <div className="min-h-screen bg-cream text-ink font-sans transition-colors duration-200 py-16 px-6 sm:px-12">
+      <div className="max-w-[1250px] mx-auto space-y-16">
         
         {/* Header Hero */}
-        <div className="text-center space-y-4 max-w-2xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-brand leading-tight">{t("title")}</h1>
-          <p className="text-ink-2 text-base leading-relaxed">{t("subtitle")}</p>
+        <div className="text-center space-y-6 max-w-3xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand tracking-tight leading-tight">{t("title")}</h1>
+          <p className="text-ink-2 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">{t("subtitle")}</p>
           
           {/* Search Bar */}
-          <div className="relative mt-6 max-w-md mx-auto">
-            <span className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+          <div className="relative mt-8 max-w-lg mx-auto">
+            <span className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
               <Search className="w-5 h-5 text-ink-3" />
             </span>
             <input 
@@ -128,42 +128,42 @@ export default function SupportPage() {
               placeholder={t("search_placeholder")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-10 py-3.5 bg-white border border-line rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand shadow-sm text-sm font-medium transition-all"
+              className="w-full pl-14 pr-12 py-4 bg-white border border-line rounded-2xl focus:outline-none focus:ring-4 focus:ring-brand/10 focus:border-brand shadow-sm text-base font-medium transition-all placeholder:text-ink-4"
             />
             {searchQuery && (
               <button 
                 onClick={() => setSearchQuery("")}
-                className="absolute inset-y-0 right-0 pr-4 flex items-center text-ink-3 hover:text-ink"
+                className="absolute inset-y-0 right-0 pr-5 flex items-center text-ink-3 hover:text-ink transition-colors"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5" />
               </button>
             )}
           </div>
         </div>
 
         {/* Sitemap & Help Split Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           
           {/* Left Columns - Sitemap Directory */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-12">
             {filteredCategories.length > 0 ? (
               filteredCategories.map(category => (
-                <div key={category.id} className="space-y-4">
-                  <h2 className="text-lg font-bold uppercase tracking-wider text-brand border-b border-line pb-2">{category.title}</h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div key={category.id} className="space-y-6">
+                  <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-brand border-b border-line/60 pb-3">{category.title}</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {category.items.map((item, idx) => (
                       <Link 
                         key={idx} 
                         href={item.path}
-                        className="bg-white border border-line p-5 rounded-2xl hover:shadow-card hover:-translate-y-0.5 transition-all duration-200 flex gap-4 text-left group"
+                        className="bg-white border border-line p-6 sm:p-7 rounded-2xl hover:shadow-card hover:-translate-y-0.5 transition-all duration-200 flex gap-5 text-left group"
                       >
-                        <div className="w-10 h-10 rounded-xl bg-brand-tint border border-brand-tint-2 flex items-center justify-center text-brand shrink-0 group-hover:bg-brand group-hover:text-white transition-colors">
-                          <item.icon className="w-5 h-5" />
+                        <div className="w-12 h-12 rounded-xl bg-brand-tint border border-brand-tint-2 flex items-center justify-center text-brand shrink-0 group-hover:bg-brand group-hover:text-white transition-colors">
+                          <item.icon className="w-6 h-6" />
                         </div>
-                        <div className="space-y-1">
-                          <h3 className="font-bold text-sm text-ink group-hover:text-brand transition-colors">{item.name}</h3>
-                          <p className="text-xs text-ink-3 leading-relaxed">{item.desc}</p>
-                          <span className="inline-block text-[10px] font-bold text-brand group-hover:underline pt-1">{item.path}</span>
+                        <div className="space-y-1.5">
+                          <h3 className="font-bold text-base sm:text-lg text-ink group-hover:text-brand transition-colors leading-snug">{item.name}</h3>
+                          <p className="text-sm text-ink-3 leading-relaxed">{item.desc}</p>
+                          <span className="inline-block text-xs font-semibold text-brand/80 tracking-wide mt-2 group-hover:underline">{item.path}</span>
                         </div>
                       </Link>
                     ))}
@@ -171,33 +171,33 @@ export default function SupportPage() {
                 </div>
               ))
             ) : (
-              <div className="text-center py-12 bg-white border border-line rounded-2xl p-6 text-ink-3">
-                <p className="text-sm font-semibold">{t("no_results")}</p>
+              <div className="text-center py-16 bg-white border border-line rounded-2xl p-8 text-ink-3 shadow-sm">
+                <p className="text-base font-semibold">{t("no_results")}</p>
               </div>
             )}
           </div>
 
           {/* Right Column - FAQs & Form */}
-          <div className="space-y-8">
+          <div className="space-y-10">
             
             {/* FAQs Accordion */}
-            <div className="bg-white border border-line rounded-2xl p-6 shadow-sm space-y-4">
-              <h2 className="text-lg font-bold text-ink border-b border-line pb-2">FAQs</h2>
+            <div className="bg-white border border-line rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-ink border-b border-line/60 pb-3">FAQs</h2>
               {filteredFaqs.length > 0 ? (
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {filteredFaqs.map((faq, idx) => {
                     const isOpen = activeFaq === idx;
                     return (
-                      <div key={idx} className="border border-line rounded-xl overflow-hidden">
+                      <div key={idx} className="border border-line rounded-xl overflow-hidden shadow-sm">
                         <button 
                           onClick={() => setActiveFaq(isOpen ? null : idx)}
-                          className="w-full flex items-center justify-between p-3.5 bg-brand-tint/20 hover:bg-brand-tint/40 text-left font-bold text-ink text-xs transition-colors cursor-pointer"
+                          className="w-full flex items-center justify-between p-4 bg-brand-tint/20 hover:bg-brand-tint/40 text-left font-bold text-ink text-sm sm:text-base transition-colors cursor-pointer"
                         >
                           <span>{faq.q}</span>
-                          {isOpen ? <ChevronUp className="w-4 h-4 text-brand" /> : <ChevronDown className="w-4 h-4 text-ink-3" />}
+                          {isOpen ? <ChevronUp className="w-5 h-5 text-brand" /> : <ChevronDown className="w-5 h-5 text-ink-3" />}
                         </button>
                         {isOpen && (
-                          <div className="p-3.5 border-t border-line text-xs leading-relaxed text-ink-2 bg-white">
+                          <div className="p-4 border-t border-line text-sm leading-relaxed text-ink-2 bg-white">
                             {faq.a}
                           </div>
                         )}
@@ -206,65 +206,67 @@ export default function SupportPage() {
                   })}
                 </div>
               ) : (
-                <p className="text-xs text-ink-3 text-center py-4">{t("no_results")}</p>
+                <p className="text-sm text-ink-3 text-center py-6">{t("no_results")}</p>
               )}
             </div>
 
             {/* Support Form */}
-            <div className="bg-white border border-line rounded-2xl p-6 shadow-sm space-y-4 relative overflow-hidden">
+            <div className="bg-white border border-line rounded-2xl p-6 sm:p-8 shadow-sm space-y-6 relative overflow-hidden">
               
               {/* Success Overlay */}
               {isSubmitted && (
-                <div className="absolute inset-0 bg-[#0A2A17] text-white flex flex-col items-center justify-center p-6 text-center z-10 animate-fadeIn">
-                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-4">
-                    <Check className="w-6 h-6 text-emerald-400 stroke-[3]" />
+                <div className="absolute inset-0 bg-[#0A2A17] text-white flex flex-col items-center justify-center p-8 text-center z-10 animate-fadeIn">
+                  <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-6">
+                    <Check className="w-8 h-8 text-emerald-400 stroke-[3]" />
                   </div>
-                  <h3 className="text-lg font-bold mb-1">Message Sent!</h3>
-                  <p className="text-xs text-white/70">Thank you. We will get back to you within 24 hours.</p>
+                  <h3 className="text-xl font-bold mb-2">Message Sent!</h3>
+                  <p className="text-sm text-white/70">Thank you. We will get back to you within 24 hours.</p>
                 </div>
               )}
 
-              <h2 className="text-lg font-bold text-ink">{t("contact_title")}</h2>
-              <p className="text-xs text-ink-3 leading-relaxed">{t("contact_desc")}</p>
+              <div className="space-y-2">
+                <h2 className="text-xl sm:text-2xl font-extrabold text-ink">{t("contact_title")}</h2>
+                <p className="text-sm text-ink-3 leading-relaxed">{t("contact_desc")}</p>
+              </div>
               
-              <form onSubmit={handleSubmit} className="space-y-4.5 pt-2">
+              <form onSubmit={handleSubmit} className="space-y-5 pt-2">
                 <div>
-                  <label className="block text-[10px] font-bold text-ink-3 uppercase mb-1.5">{t("contact_name")}</label>
+                  <label className="block text-xs font-bold text-ink-3 uppercase tracking-wider mb-2">{t("contact_name")}</label>
                   <input 
                     type="text" 
                     required
                     placeholder="Enter full name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-line focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand text-xs font-semibold"
+                    className="w-full px-4 py-3 rounded-xl border border-line focus:outline-none focus:ring-4 focus:ring-brand/10 focus:border-brand text-sm font-semibold transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold text-ink-3 uppercase mb-1.5">{t("contact_email")}</label>
+                  <label className="block text-xs font-bold text-ink-3 uppercase tracking-wider mb-2">{t("contact_email")}</label>
                   <input 
                     type="email" 
                     required
                     placeholder="Enter email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-line focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand text-xs font-semibold"
+                    className="w-full px-4 py-3 rounded-xl border border-line focus:outline-none focus:ring-4 focus:ring-brand/10 focus:border-brand text-sm font-semibold transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold text-ink-3 uppercase mb-1.5">{t("contact_message")}</label>
+                  <label className="block text-xs font-bold text-ink-3 uppercase tracking-wider mb-2">{t("contact_message")}</label>
                   <textarea 
                     required
                     rows={4}
                     placeholder="Describe your issue or request..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-line focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand text-xs font-semibold"
+                    className="w-full px-4 py-3 rounded-xl border border-line focus:outline-none focus:ring-4 focus:ring-brand/10 focus:border-brand text-sm font-semibold transition-all"
                   />
                 </div>
                 
                 <button 
                   type="submit"
-                  className="w-full bg-[#16A34A] hover:bg-cta-hover text-white py-3 rounded-xl font-bold transition-all shadow-sm active:scale-98 cursor-pointer text-xs"
+                  className="w-full bg-[#16A34A] hover:bg-cta-hover text-white py-3.5 rounded-xl font-bold transition-all shadow-sm active:scale-98 cursor-pointer text-sm"
                 >
                   {t("contact_submit")}
                 </button>
@@ -272,20 +274,19 @@ export default function SupportPage() {
             </div>
 
             {/* Direct Contact Info */}
-            <div className="bg-brand text-white border border-brand/10 rounded-2xl p-6 shadow-sm text-xs space-y-3 leading-relaxed">
-              <p className="font-bold uppercase tracking-wider text-[10px] text-white/50">Direct Contacts</p>
-              <div className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
-                <Mail className="w-4 h-4 text-emerald-400" />
-                <a href="mailto:jayantolhyan@khelclan.online">jayantolhyan@khelclan.online</a>
+            <div className="bg-brand text-white border border-brand/10 rounded-2xl p-6 sm:p-8 shadow-sm text-sm space-y-4 leading-relaxed">
+              <p className="font-bold uppercase tracking-wider text-xs text-white/50">Direct Contacts</p>
+              <div className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                <Mail className="w-5 h-5 text-emerald-400" />
+                <a href="mailto:jayantolhyan@khelclan.online" className="font-medium">jayantolhyan@khelclan.online</a>
               </div>
-              <div className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
-                <Phone className="w-4 h-4 text-emerald-400" />
-                <a href="tel:+919667344125">+91 96673 44125</a>
+              <div className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                <Phone className="w-5 h-5 text-emerald-400" />
+                <a href="tel:+919667344125" className="font-medium">+91 96673 44125</a>
               </div>
             </div>
 
           </div>
-
         </div>
 
       </div>
