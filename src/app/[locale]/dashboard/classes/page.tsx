@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Download, QrCode, Plus, Search, Radio, X, Loader2, Check } from "lucide-react";
+import { Download, QrCode, Plus, Search, Radio, X, Loader2, Check, Camera, User } from "lucide-react";
 import Image from "next/image";
 
 export default function MyClassPage() {
@@ -20,6 +20,7 @@ export default function MyClassPage() {
   const [isAddStudentOpen, setIsAddStudentOpen] = useState(false);
   const [newStudentName, setNewStudentName] = useState("");
   const [newStudentRoll, setNewStudentRoll] = useState("");
+  const [newStudentAvatar, setNewStudentAvatar] = useState<string | null>(null);
   
   const [isPairingOpen, setIsPairingOpen] = useState(false);
   const [pairingStatus, setPairingStatus] = useState<"idle" | "scanning" | "pairing" | "complete">("idle");
@@ -35,6 +36,17 @@ export default function MyClassPage() {
     }
   }, [toastMessage]);
 
+  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setNewStudentAvatar(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleAddStudentSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newStudentName || !newStudentRoll) return;
@@ -42,7 +54,7 @@ export default function MyClassPage() {
     const newStudent = {
       id: students.length + 1,
       name: newStudentName,
-      avatar: `https://i.pravatar.cc/150?img=${(students.length % 70) + 1}`,
+      avatar: newStudentAvatar || `https://i.pravatar.cc/150?img=${(students.length % 70) + 1}`,
       rollNo: parseInt(newStudentRoll) || 100 + students.length,
     };
 
@@ -50,6 +62,7 @@ export default function MyClassPage() {
     setIsAddStudentOpen(false);
     setNewStudentName("");
     setNewStudentRoll("");
+    setNewStudentAvatar(null);
     setToastMessage(`Student "${newStudent.name}" added successfully!`);
   };
 
@@ -191,6 +204,7 @@ export default function MyClassPage() {
                     src={student.avatar} 
                     alt={student.name} 
                     fill 
+                    unoptimized
                     className="rounded-full object-cover border-2 border-gray-100"
                   />
                 </div>
@@ -213,13 +227,64 @@ export default function MyClassPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
           <div className="w-full max-w-md bg-white border border-gray-150 rounded-2xl shadow-xl p-6 relative animate-fadeIn text-gray-700">
             <button 
-              onClick={() => setIsAddStudentOpen(false)}
+              onClick={() => {
+                setIsAddStudentOpen(false);
+                setNewStudentAvatar(null);
+              }}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
             <h3 className="text-xl font-extrabold text-gray-800 mb-4">Add New Student</h3>
             <form onSubmit={handleAddStudentSubmit} className="space-y-4">
+              
+              {/* Photo Upload Area */}
+              <div className="flex flex-col items-center justify-center pb-2">
+                <div className="relative group w-20 h-20 rounded-full overflow-hidden border-2 border-gray-200 bg-gray-50 flex items-center justify-center shadow-inner">
+                  {newStudentAvatar ? (
+                    <Image 
+                      src={newStudentAvatar} 
+                      alt="Preview" 
+                      fill 
+                      unoptimized
+                      className="object-cover"
+                    />
+                  ) : (
+                    <User className="w-10 h-10 text-gray-400" />
+                  )}
+                  <label 
+                    htmlFor="student-photo" 
+                    className="absolute inset-0 bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-[10px] font-bold uppercase tracking-wider text-center p-1"
+                  >
+                    Change
+                  </label>
+                </div>
+                <input 
+                  type="file" 
+                  id="student-photo" 
+                  accept="image/*" 
+                  onChange={handleAvatarChange} 
+                  className="hidden"
+                />
+                <button
+                  type="button"
+                  onClick={() => document.getElementById("student-photo")?.click()}
+                  className="text-xs font-bold text-green-700 hover:text-green-800 mt-2 flex items-center gap-1 bg-green-50 px-2.5 py-1.5 rounded-lg border border-green-100"
+                >
+                  <Camera className="w-3.5 h-3.5" />
+                  {newStudentAvatar ? "Change Photo" : "Upload Photo"}
+                </button>
+                {newStudentAvatar && (
+                  <button 
+                    type="button"
+                    onClick={() => setNewStudentAvatar(null)}
+                    className="text-[10px] font-semibold text-red-500 hover:underline mt-1"
+                  >
+                    Remove Photo
+                  </button>
+                )}
+              </div>
+
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase">Full Name</label>
                 <input 
