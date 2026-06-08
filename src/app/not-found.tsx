@@ -96,9 +96,9 @@ export default function NotFound() {
             © 2026 TeacherSathi · Teachers ka Superpower
           </span>
           <nav className="flex gap-5 text-xs text-[#5E6C5A] font-semibold">
-            <a href="#" className="hover:text-[#166534] transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-[#166534] transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-[#166534] transition-colors">Contact Us</a>
+            <a href="/privacy" className="hover:text-[#166534] transition-colors">Privacy Policy</a>
+            <a href="/terms" className="hover:text-[#166534] transition-colors">Terms of Service</a>
+            <a href="/support/contact" className="hover:text-[#166534] transition-colors">Contact Us</a>
           </nav>
         </footer>
       </body>
