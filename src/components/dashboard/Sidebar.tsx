@@ -18,7 +18,7 @@ function SidebarNav() {
   return (
     <>
       <div className="p-6 mb-6 border-b border-white/10 flex items-center justify-start">
-        <Link href="/dashboard" className="hover:opacity-95 transition-opacity">
+        <Link href="/" className="hover:opacity-95 transition-opacity">
           <img src="/logo-horizontal-on-dark.png" alt="TeacherSathi Logo" className="h-9 w-auto object-contain" />
         </Link>
       </div>
