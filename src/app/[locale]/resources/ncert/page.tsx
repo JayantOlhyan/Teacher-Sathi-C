@@ -19,10 +19,10 @@ export default function NcertPage() {
       color: "bg-[#258088]", // Teal
       spineClass: "border-l-[12px] border-[#1b5e64]",
       chapters: [
-        { num: "Ch 1", name: "Chemical Reactions & Equations", nameHi: "रासायनिक अभिक्रियाएं एवं समीकरण" },
-        { num: "Ch 2", name: "Acids, Bases & Salts", nameHi: "अम्ल, क्षारक एवं लवण" },
-        { num: "Ch 6", name: "Life Processes", nameHi: "जैव प्रक्रम" },
-        { num: "Ch 10", name: "Light — Reflection & Refraction", nameHi: "प्रकाश — परावर्तन तथा अपवर्तन" }
+        { num: "Ch 1", name: "Chemical Reactions & Equations" },
+        { num: "Ch 2", name: "Acids, Bases & Salts" },
+        { num: "Ch 6", name: "Life Processes" },
+        { num: "Ch 10", name: "Light — Reflection & Refraction" }
       ]
     },
     {
@@ -32,10 +32,10 @@ export default function NcertPage() {
       color: "bg-[#D95B2A]", // Burnt Orange
       spineClass: "border-l-[12px] border-[#a3441f]",
       chapters: [
-        { num: "Ch 1", name: "Real Numbers", nameHi: "वास्तविक संख्याएँ" },
-        { num: "Ch 2", name: "Polynomials", nameHi: "बहुपद" },
-        { num: "Ch 3", name: "Pair of Linear Equations", nameHi: "दो चर वाले रैखिक समीकरण युग्म" },
-        { num: "Ch 6", name: "Triangles", nameHi: "त्रिभुज" }
+        { num: "Ch 1", name: "Real Numbers" },
+        { num: "Ch 2", name: "Polynomials" },
+        { num: "Ch 3", name: "Pair of Linear Equations" },
+        { num: "Ch 6", name: "Triangles" }
       ]
     },
     {
@@ -45,10 +45,10 @@ export default function NcertPage() {
       color: "bg-[#6A8146]", // Olive
       spineClass: "border-l-[12px] border-[#4d5e32]",
       chapters: [
-        { num: "Ch 1", name: "Resources & Development", nameHi: "संसाधन एवं विकास" },
-        { num: "Ch 2", name: "Forest & Wildlife Resources", nameHi: "वन्य एवं वन्यजीव संसाधन" },
-        { num: "Ch 3", name: "Water Resources", nameHi: "जल संसाधन" },
-        { num: "Ch 4", name: "Agriculture", nameHi: "कृषि" }
+        { num: "Ch 1", name: "Resources & Development" },
+        { num: "Ch 2", name: "Forest & Wildlife Resources" },
+        { num: "Ch 3", name: "Water Resources" },
+        { num: "Ch 4", name: "Agriculture" }
       ]
     },
     {
@@ -58,9 +58,9 @@ export default function NcertPage() {
       color: "bg-[#1E3A5F]", // Deep Navy
       spineClass: "border-l-[12px] border-[#12243b]",
       chapters: [
-        { num: "Ch 1", name: "A Letter to God", nameHi: "अ लेटर टू गॉड" },
-        { num: "Ch 2", name: "Nelson Mandela: Long Walk to Freedom", nameHi: "नेल्सन मंडेला: लॉन्ग वॉक टू फ्रीडम" },
-        { num: "Ch 3", name: "Two Stories about Flying", nameHi: "टू स्टोरीज अबाउट फ्लाइंग" }
+        { num: "Ch 1", name: "A Letter to God" },
+        { num: "Ch 2", name: "Nelson Mandela: Long Walk to Freedom" },
+        { num: "Ch 3", name: "Two Stories about Flying" }
       ]
     },
     {
@@ -70,9 +70,9 @@ export default function NcertPage() {
       color: "bg-[#D97706]", // Amber
       spineClass: "border-l-[12px] border-[#a15804]",
       chapters: [
-        { num: "Ch 1", name: "Surdas ke Pad", nameHi: "सूरदास के पद" },
-        { num: "Ch 2", name: "Ram-Lakshman-Parashuram Samvad", nameHi: "राम-लक्ष्मण-परशुराम संवाद" },
-        { num: "Ch 3", name: "Savaiya aur Kavitta", nameHi: "सवैया और कवित्त" }
+        { num: "Ch 1", name: "Surdas ke Pad" },
+        { num: "Ch 2", name: "Ram-Lakshman-Parashuram Samvad" },
+        { num: "Ch 3", name: "Savaiya aur Kavitta" }
       ]
     }
   ];
@@ -86,7 +86,7 @@ export default function NcertPage() {
       <div className="max-w-[1200px] mx-auto px-4 pt-8">
         <Link href="/" className="inline-flex items-center gap-2 text-[#166534] hover:underline font-semibold text-sm">
           <ArrowLeft className="w-4 h-4" /> 
-          {isHi ? "मुख्य पृष्ठ पर वापस जाएं" : "Back to Home"}
+          {"Back to Home"}
         </Link>
       </div>
 
@@ -96,7 +96,7 @@ export default function NcertPage() {
           <GraduationCap className="w-4 h-4" /> Classes 6 - 10 Coverage
         </div>
         <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-[#166534] leading-tight">
-          {isHi ? "NCERT कक्षा 6-10 पाठ्यक्रम हब" : "NCERT Class 6-10 Syllabus Hub"}
+          {"NCERT Class 6-10 Syllabus Hub"}
         </h1>
         <p className="text-lg text-[#3C4B3A]/80 max-w-2xl mx-auto">
           {isHi 
@@ -111,7 +111,7 @@ export default function NcertPage() {
         {/* Bookshelf Render */}
         <div className="lg:col-span-6 flex flex-col justify-between bg-[#EEF2EA] border border-[#DCE4D7] rounded-3xl p-8 shadow-sm">
           <h2 className="text-xl font-bold text-[#1C2B1C] mb-6 text-center lg:text-left">
-            {isHi ? "इंटरएक्टिव बुकशेल्फ़ (विषय चुनें) 📚" : "Interactive Bookshelf (Pick a book) 📚"}
+            {"Interactive Bookshelf (Pick a book) 📚"}
           </h2>
           
           <div className="flex justify-center items-end gap-2 h-[280px] border-b-[14px] border-[#cbd5e1] pb-1 px-4 relative">
@@ -126,7 +126,7 @@ export default function NcertPage() {
                   }`}
                   style={{ height: sub.id === "science" ? "92%" : sub.id === "maths" ? "88%" : sub.id === "social" ? "90%" : sub.id === "english" ? "84%" : "86%" }}
                 >
-                  {isHi ? sub.titleHi : sub.title}
+                  {sub.title}
                 </button>
               );
             })}
@@ -147,14 +147,14 @@ export default function NcertPage() {
                 <BookOpen className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-[#1C2B1C]">{isHi ? currentSubject.titleHi : currentSubject.title}</h3>
+                <h3 className="text-2xl font-bold text-[#1C2B1C]">{currentSubject.title}</h3>
                 <span className="text-xs text-[#5E6C5A] uppercase tracking-wider font-semibold">NCERT Class 10 Syllabus</span>
               </div>
             </div>
 
             <div className="space-y-4">
               <h4 className="text-sm font-bold uppercase tracking-wider text-[#166534]">
-                {isHi ? "सामग्री इंडेक्स" : "Featured Chapter Index"}
+                {"Featured Chapter Index"}
               </h4>
               
               <div className="space-y-3">
@@ -165,7 +165,7 @@ export default function NcertPage() {
                         {ch.num}
                       </span>
                       <span className="text-sm font-semibold text-[#1C2B1C]">
-                        {isHi ? ch.nameHi : ch.name}
+                        {ch.name}
                       </span>
                     </div>
                     <div className="flex gap-1">
@@ -185,13 +185,13 @@ export default function NcertPage() {
           <div className="mt-8 pt-6 border-t border-[#DCE4D7] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-1 text-xs text-[#5E6C5A]">
               <Sparkles className="w-4 h-4 text-amber-500 animate-pulse-slow" />
-              {isHi ? "सभी विषय हिंदी + अंग्रेज़ी में उपलब्ध हैं" : "Bilingual tracks active for all items"}
+              {"Bilingual tracks active for all items"}
             </div>
             <Link 
               href="/signup" 
               className="bg-[#16A34A] hover:bg-[#128A3E] text-white text-sm font-bold text-center px-6 py-2.5 rounded-xl shadow-brand hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
-              {isHi ? "मुफ़्त एक्सेस करें" : "Access For Free"}
+              {"Access For Free"}
             </Link>
           </div>
 
@@ -202,11 +202,11 @@ export default function NcertPage() {
       {/* Feature Grid Details */}
       <section className="max-w-[900px] mx-auto px-4 mt-20 space-y-8">
         <h3 className="text-2xl font-black text-center text-[#166534]">
-          {isHi ? "कक्षा में उपयोग के लिए तैयार विशेषताएं" : "Ready for Classroom Smart Screens"}
+          {"Ready for Classroom Smart Screens"}
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="bg-white border border-[#DCE4D7] rounded-2xl p-6 space-y-2">
-            <h4 className="font-bold text-base text-[#1C2B1C]">{isHi ? "दूरी से सुपाठ्य" : "15-Foot Legibility"}</h4>
+            <h4 className="font-bold text-base text-[#1C2B1C]">{"15-Foot Legibility"}</h4>
             <p className="text-sm text-[#5E6C5A] leading-relaxed">
               {isHi 
                 ? "Plus Jakarta Sans और Mukta फॉन्ट संयोजन के कारण कक्षा में पीछे बैठे छात्रों को भी स्क्रीन साफ दिखती है।"
@@ -214,7 +214,7 @@ export default function NcertPage() {
             </p>
           </div>
           <div className="bg-white border border-[#DCE4D7] rounded-2xl p-6 space-y-2">
-            <h4 className="font-bold text-base text-[#1C2B1C]">{isHi ? "द्विभाषी ट्रैक स्विच" : "Instant Language Swap"}</h4>
+            <h4 className="font-bold text-base text-[#1C2B1C]">{"Instant Language Swap"}</h4>
             <p className="text-sm text-[#5E6C5A] leading-relaxed">
               {isHi 
                 ? "बिना किसी पेज रीलोड के पूरे व्याख्यान, प्रश्नोत्तरी और नोट्स को तुरंत हिंदी से अंग्रेज़ी में बदलें।"

@@ -38,9 +38,7 @@ export default function NotFound() {
         <div className="mt-4 max-w-[620px] bg-white border border-[#DCE4D7] rounded-3xl shadow-[0_1px_3px_rgba(28,43,28,0.07),0_4px_12px_rgba(28,43,28,0.05)] p-8 sm:p-10">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1C2B1C] leading-snug">
             Oops! This page got lost in the school hallways.
-            <span className="block font-medium font-devanagari text-lg sm:text-xl text-[#15803D] mt-2 font-['Mukta']">
-              अरे! यह पेज कहीं खो गया है।
-            </span>
+            
           </h2>
           <p className="mt-4 text-[#5E6C5A] text-base sm:text-lg max-w-md mx-auto">
             The page you&apos;re looking for doesn&apos;t exist or has been moved to a new classroom.

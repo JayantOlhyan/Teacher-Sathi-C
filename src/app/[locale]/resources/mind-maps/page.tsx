@@ -19,31 +19,30 @@ import { Button } from "@/components/ui/Button";
 interface MindMapNode {
   id: string;
   name: string;
-  nameHi: string;
+  
   cx: number;
   cy: number;
   color: string;
   glowColor: string;
   subtopics: string[];
-  subtopicsHi: string[];
+  
   description: string;
-  descriptionHi: string;
+  
 }
 
 interface MindMapData {
   topic: string;
-  topicHi: string;
+  
   nodes: MindMapNode[];
 }
 
 const lifeProcessesMap: MindMapData = {
   topic: "Life Processes",
-  topicHi: "जैव प्रक्रम",
+  
   nodes: [
     {
       id: "nutrition",
       name: "Nutrition",
-      nameHi: "पोषण",
       cx: 80,
       cy: 100,
       color: "#258088", // Teal
@@ -54,19 +53,13 @@ const lifeProcessesMap: MindMapData = {
         "Human Digestive System & Enzymes",
         "Limiting factors of Photosynthesis"
       ],
-      subtopicsHi: [
-        "स्वपोषी पोषण (क्लोरोप्लास्ट, स्टोमेटा)",
-        "विषमपोषी पोषण (अमीबा में भोजन)",
-        "मानव पाचन तंत्र और एंजाइम",
-        "प्रकाश संश्लेषण के सीमित कारक"
-      ],
+      
       description: "How organisms obtain and utilize nutrients to generate glucose and structural raw materials.",
-      descriptionHi: "जीव कैसे ग्लूकोज और संरचनात्मक कच्चे माल उत्पन्न करने के लिए पोषक तत्व प्राप्त करते हैं और उनका उपयोग करते हैं।"
+      
     },
     {
       id: "respiration",
       name: "Respiration",
-      nameHi: "श्वसन",
       cx: 320,
       cy: 100,
       color: "#D95B2A", // Orange
@@ -77,19 +70,13 @@ const lifeProcessesMap: MindMapData = {
         "Human Alveoli exchange process",
         "Cellular energy currency (ATP)"
       ],
-      subtopicsHi: [
-        "वायवीय श्वसन (माइटोकॉन्ड्रिया में O₂ के साथ)",
-        "अवायवीय श्वसन (खमीर/मांसपेशियों में O₂ के बिना)",
-        "मानव कूपिका (Alveoli) गैस विनिमय",
-        "कोशिकीय ऊर्जा मुद्रा (ATP)"
-      ],
+      
       description: "The biochemical oxidation of glucose to release vital cellular energy in the form of ATP.",
-      descriptionHi: "एटीपी (ATP) के रूप में महत्वपूर्ण कोशिकीय ऊर्जा जारी करने के लिए ग्लूकोज का जैव रासायनिक ऑक्सीकरण।"
+      
     },
     {
       id: "transportation",
       name: "Transportation",
-      nameHi: "वहन / परिवहन",
       cx: 80,
       cy: 300,
       color: "#6A8146", // Olive
@@ -100,19 +87,13 @@ const lifeProcessesMap: MindMapData = {
         "Blood vessels (Arteries vs Veins)",
         "Xylem water & Phloem food transport"
       ],
-      subtopicsHi: [
-        "मानव हृदय: 4 कोष्ठक (चैंबर)",
-        "द्वि-संचरण (फुफ्फुसीय/दैहिक)",
-        "रक्त वाहिकाएं (धमनियां बनाम शिराएं)",
-        "जाइलम (जल) और फ्लोएम (भोजन) परिवहन"
-      ],
+      
       description: "The systemic circulation of blood, oxygen, and nutrients in humans and vascular sap in plants.",
-      descriptionHi: "मनुष्यों में रक्त, ऑक्सीजन और पोषक तत्वों का प्रणालीगत परिसंचरण और पौधों में संवहनी रस।"
+      
     },
     {
       id: "excretion",
       name: "Excretion",
-      nameHi: "उत्सर्जन",
       cx: 320,
       cy: 300,
       color: "#D97706", // Amber
@@ -123,26 +104,20 @@ const lifeProcessesMap: MindMapData = {
         "Selective reabsorption of water/salts",
         "Plant excretory waste release methods"
       ],
-      subtopicsHi: [
-        "मानव मूत्र प्रणाली के घटक",
-        "नेफ्रॉन: बोमन कैप्सूल और नलिकाएं",
-        "पानी/लवण का चयनात्मक पुनरावशोषण",
-        "पौधों में उत्सर्जी अपशिष्ट हटाने की विधियां"
-      ],
+      
       description: "Filtration and removal of toxic nitrogenous waste products from the living organism's blood system.",
-      descriptionHi: "जीवित जीव की रक्त प्रणाली से विषाक्त नाइट्रोजनयुक्त अपशिष्ट उत्पादों का निस्पंदन और निष्कासन।"
+      
     }
   ]
 };
 
 const chemicalReactionsMap: MindMapData = {
   topic: "Chemical Reactions",
-  topicHi: "रासायनिक अभिक्रियाएं",
+  
   nodes: [
     {
       id: "types",
       name: "Types of Reactions",
-      nameHi: "अभिक्रियाओं के प्रकार",
       cx: 80,
       cy: 100,
       color: "#258088", // Teal
@@ -153,19 +128,13 @@ const chemicalReactionsMap: MindMapData = {
         "Displacement (Activity series rules)",
         "Double Displacement (Precipitation)"
       ],
-      subtopicsHi: [
-        "संयोजन अभिक्रिया (A + B -> AB)",
-        "अपघटन (तापीय, विद्युत अपघटनी)",
-        "विस्थापन (सक्रियता श्रेणी के नियम)",
-        "द्वि-विस्थापन (अवक्षेपण)"
-      ],
+      
       description: "The primary categories of chemical changes classified by atomic rearrangements.",
-      descriptionHi: "परमाणु पुनर्गठन द्वारा वर्गीकृत रासायनिक परिवर्तनों की प्राथमिक श्रेणियां।"
+      
     },
     {
       id: "redox",
       name: "Redox Reactions",
-      nameHi: "ऑक्सीकरण-अपचयन",
       cx: 320,
       cy: 100,
       color: "#D95B2A", // Orange
@@ -176,19 +145,13 @@ const chemicalReactionsMap: MindMapData = {
         "Reducing Agents & Oxidizing Agents",
         "Simultaneous oxidation/reduction"
       ],
-      subtopicsHi: [
-        "ऑक्सीकरण (ऑक्सीजन प्राप्त करना / हाइड्रोजन खोना)",
-        "अपचयन (ऑक्सीजन खोना / ऑक्सीजन प्राप्त करना)",
-        "अपचायक कारक और ऑक्सीकारक कारक",
-        "एक साथ ऑक्सीकरण/अपचयन की क्रिया"
-      ],
+      
       description: "Reactions that involve a transfer of oxygen atoms or electrons between chemical species.",
-      descriptionHi: "वे अभिक्रियाएं जिनमें रासायनिक प्रजातियों के बीच ऑक्सीजन परमाणुओं या इलेक्ट्रॉनों का स्थानांतरण शामिल होता है।"
+      
     },
     {
       id: "equations",
       name: "Equations",
-      nameHi: "रासायनिक समीकरण",
       cx: 80,
       cy: 300,
       color: "#6A8146", // Olive
@@ -199,19 +162,13 @@ const chemicalReactionsMap: MindMapData = {
         "Balancing (Hit-and-trial method)",
         "Law of Conservation of Mass"
       ],
-      subtopicsHi: [
-        "अभिकारक बनाम उत्पाद संकेतन",
-        "कंकाली रासायनिक समीकरण",
-        "संतुलन (हिट-एंड-ट्रायल विधि)",
-        "द्रव्यमान संरक्षण का नियम"
-      ],
+      
       description: "Symbolic representations of chemical reactions indicating chemical formulas and conservation of atoms.",
-      descriptionHi: "रासायनिक प्रतिक्रियाओं का प्रतीकात्मक प्रतिनिधित्व जो रासायनिक सूत्रों और परमाणुओं के संरक्षण को दर्शाता है।"
+      
     },
     {
       id: "effects",
       name: "Daily Life Effects",
-      nameHi: "दैनिक जीवन में प्रभाव",
       cx: 320,
       cy: 300,
       color: "#D97706", // Amber
@@ -222,14 +179,9 @@ const chemicalReactionsMap: MindMapData = {
         "Prevention: Galvanization & Painting",
         "Antioxidants & Nitrogen purging"
       ],
-      subtopicsHi: [
-        "धातुओं का संक्षारण (लोहे में जंग)",
-        "वसायुक्त भोजन का विकृतगंधिता (खराब होना)",
-        "रोकथाम: यशदलेपन (Galvanization) और पेंट",
-        "एंटीऑक्सीडेंट और नाइट्रोजन गैस भरना"
-      ],
+      
       description: "How slow oxidation processes impact metal infrastructures and degradation of food items.",
-      descriptionHi: "कैसे धीमी ऑक्सीकरण प्रक्रियाएं धातु के बुनियादी ढांचे और खाद्य पदार्थों के खराब होने को प्रभावित करती हैं।"
+      
     }
   ]
 };
@@ -270,7 +222,7 @@ export default function MindMapsPage() {
       <div className="max-w-[1200px] mx-auto px-4 pt-8">
         <Link href="/" className="inline-flex items-center gap-2 text-[#166534] hover:underline font-semibold text-sm">
           <ArrowLeft className="w-4 h-4" /> 
-          {isHi ? "मुख्य पृष्ठ पर वापस जाएं" : "Back to Home"}
+          {"Back to Home"}
         </Link>
       </div>
 
@@ -280,7 +232,7 @@ export default function MindMapsPage() {
           <Network className="w-4 h-4 text-emerald-600 animate-pulse-slow" /> NCERT Concept Cartography
         </div>
         <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-[#166534] leading-tight">
-          {isHi ? "इंटरएक्टिव माइंड मैप्स (Mind Maps)" : "Interactive Visual Mind Maps"}
+          {"Interactive Visual Mind Maps"}
         </h1>
         <p className="text-lg text-[#3C4B3A]/80 max-w-2xl mx-auto">
           {isHi 
@@ -296,13 +248,13 @@ export default function MindMapsPage() {
         <div className="lg:col-span-4 bg-white border border-[#DCE4D7] rounded-3xl p-6 shadow-sm h-fit space-y-6">
           <h3 className="text-base font-bold text-[#1C2B1C] border-b border-[#DCE4D7] pb-3 flex items-center gap-2">
             <Settings className="w-4 h-4 text-[#166534]" />
-            {isHi ? "माइंड मैप सेटिंग्स" : "Map Cartography Settings"}
+            {"Map Cartography Settings"}
           </h3>
 
           {/* Subject Selector */}
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-wider text-[#5E6C5A] block">
-              {isHi ? "विषय" : "Subject"}
+              {"Subject"}
             </label>
             <select 
               value={subject} 
@@ -318,7 +270,7 @@ export default function MindMapsPage() {
           {/* Chapter Selector */}
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-wider text-[#5E6C5A] block">
-              {isHi ? "अध्याय" : "Chapter"}
+              {"Chapter"}
             </label>
             <select 
               value={chapter} 
@@ -346,12 +298,12 @@ export default function MindMapsPage() {
             {loading ? (
               <>
                 <Loader2 className="w-5 h-5 animate-spin" />
-                {isHi ? "नक्शा तैयार हो रहा है..." : "Saathi AI plotting..."}
+                {"Saathi AI plotting..."}
               </>
             ) : (
               <>
                 <Wand2 className="w-5 h-5" />
-                {isHi ? "माइंड मैप लोड करें" : "Render Concept Map"}
+                {"Render Concept Map"}
               </>
             )}
           </Button>
@@ -364,7 +316,7 @@ export default function MindMapsPage() {
             <div className="absolute inset-0 bg-[#F7F9F4]/75 backdrop-blur-xs z-20 flex flex-col items-center justify-center space-y-4">
               <div className="w-12 h-12 rounded-full border-4 border-brand border-t-transparent animate-spin"></div>
               <p className="text-sm font-bold text-brand animate-pulse">
-                {isHi ? "अवधारणा संबंधों का मानचित्रण किया जा रहा है..." : "Assembling nodes & schematic vector paths..."}
+                {"Assembling nodes & schematic vector paths..."}
               </p>
             </div>
           )}
@@ -414,7 +366,7 @@ export default function MindMapsPage() {
                   fontWeight="black"
                   className="pointer-events-none select-none font-sans"
                 >
-                  {isHi ? activeMap.topicHi : activeMap.topic}
+                  {activeMap.topic}
                 </text>
 
                 {/* Surrounding Child Nodes */}
@@ -473,7 +425,7 @@ export default function MindMapsPage() {
                         fontWeight="bold"
                         className="pointer-events-none select-none font-sans"
                       >
-                        {isHi ? n.nameHi : n.name}
+                        {n.name}
                       </text>
                     </g>
                   );
@@ -481,7 +433,7 @@ export default function MindMapsPage() {
               </svg>
 
               <span className="text-[10px] font-bold text-[#5E6C5A] uppercase tracking-wider mt-4 animate-pulse">
-                {isHi ? "📚 किसी नोड पर क्लिक करके विस्तृत विवरण देखें" : "📚 Click a branch node to drill down details"}
+                {"📚 Click a branch node to drill down details"}
               </span>
 
             </div>
@@ -499,7 +451,7 @@ export default function MindMapsPage() {
                 </div>
                 <div>
                   <h4 className="text-lg font-black text-brand">
-                    {isHi ? selectedNode.nameHi : selectedNode.name}
+                    {selectedNode.name}
                   </h4>
                   <span className="text-[10px] text-[#5E6C5A] uppercase tracking-widest font-bold">
                     Class 10 Core Node
@@ -513,7 +465,7 @@ export default function MindMapsPage() {
                   <Info className="w-3.5 h-3.5" /> Summary Focus
                 </h5>
                 <p className="text-sm text-ink-2 font-semibold leading-relaxed">
-                  {isHi ? selectedNode.descriptionHi : selectedNode.description}
+                  {selectedNode.description}
                 </p>
               </div>
 
@@ -523,7 +475,7 @@ export default function MindMapsPage() {
                   <Zap className="w-3.5 h-3.5 text-amber-500" /> Syllabus Anchors
                 </h5>
                 <div className="space-y-2">
-                  {(isHi ? selectedNode.subtopicsHi : selectedNode.subtopics).map((sub, i) => (
+                  {selectedNode.subtopics.map((sub, i) => (
                     <div key={i} className="flex items-start gap-2 text-xs bg-[#EEF2EA]/40 border border-[#DCE4D7] p-2.5 rounded-xl shadow-xs">
                       <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                       <span className="font-semibold text-ink-2">{sub}</span>
@@ -545,7 +497,7 @@ export default function MindMapsPage() {
               href="/signup" 
               className="bg-[#16A34A] hover:bg-[#128A3E] text-white text-sm font-bold text-center px-6 py-2.5 rounded-xl shadow-brand hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
-              {isHi ? "पूरा मैप डाउनलोड करें" : "Export High-Res Vector"}
+              {"Export High-Res Vector"}
             </Link>
           </div>
 
@@ -556,12 +508,12 @@ export default function MindMapsPage() {
       {/* Feature Grid Details */}
       <section className="max-w-[900px] mx-auto px-4 mt-20 space-y-8">
         <h3 className="text-2xl font-black text-center text-[#166534]">
-          {isHi ? "कक्षा प्रदर्शन के लिए तैयार" : "Optimized for High-Impact Classrooms"}
+          {"Optimized for High-Impact Classrooms"}
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="bg-white border border-[#DCE4D7] rounded-2xl p-6 space-y-2">
             <h4 className="font-bold text-base text-[#1C2B1C]">
-              {isHi ? "स्टायलस और व्हाइटबोर्ड सपोर्ट" : "Stylus & Smart Board Compatible"}
+              {"Stylus & Smart Board Compatible"}
             </h4>
             <p className="text-sm text-[#5E6C5A] leading-relaxed">
               {isHi 
@@ -571,7 +523,7 @@ export default function MindMapsPage() {
           </div>
           <div className="bg-white border border-[#DCE4D7] rounded-2xl p-6 space-y-2">
             <h4 className="font-bold text-base text-[#1C2B1C]">
-              {isHi ? "द्विभाषी अवधारणा दृश्य" : "Bilingual Nodes Switching"}
+              {"Bilingual Nodes Switching"}
             </h4>
             <p className="text-sm text-[#5E6C5A] leading-relaxed">
               {isHi 

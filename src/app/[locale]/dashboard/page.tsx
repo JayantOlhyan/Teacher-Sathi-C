@@ -112,7 +112,7 @@ export default function DashboardPage() {
           <div className="text-8xl animate-bounce mb-6">🔔</div>
           <h2 className="text-5xl sm:text-6xl font-black tracking-wider text-center leading-tight drop-shadow-md">
             SILENCE, PLEASE!<br />
-            <span className="text-amber-300 font-devanagari font-medium mt-4 block text-4xl sm:text-5xl">कृपया शांत रहें!</span>
+            
           </h2>
           <p className="text-white/80 mt-8 text-sm font-semibold tracking-wider uppercase">Attention Alarm Active • Closing in 2s</p>
         </div>

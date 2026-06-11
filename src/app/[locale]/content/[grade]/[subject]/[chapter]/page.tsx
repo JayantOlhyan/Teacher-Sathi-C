@@ -123,9 +123,7 @@ export default function ChapterHubPage() {
           <h1 className="text-4xl sm:text-5xl font-extrabold text-ink leading-tight mb-2">
             Light — Reflection & Refraction
           </h1>
-          <h2 className="text-2xl sm:text-3xl font-bold text-brand-secondary leading-tight">
-            प्रकाश — परावर्तन तथा अपवर्तन
-          </h2>
+          
           
           <div className="flex flex-wrap items-center gap-4 mt-6">
             <div className="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-line shadow-sm text-sm font-semibold text-ink-2">

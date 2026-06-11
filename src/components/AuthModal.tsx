@@ -102,12 +102,12 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
               <h2 className="text-3xl font-extrabold text-ink leading-tight">
                 {tab === "login" ? (
                   <>
-                    <span className="text-[#15803D] font-devanagari font-medium block text-xl">नमस्ते!</span>
+                    
                     Welcome back
                   </>
                 ) : (
                   <>
-                    <span className="text-[#15803D] font-devanagari font-medium block text-xl">शुरू करें!</span>
+                    
                     Create an account
                   </>
                 )}

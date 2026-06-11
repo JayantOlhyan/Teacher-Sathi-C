@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Link, usePathname } from "@/i18n/routing";
-import { Mail, Heart, Settings, X, Eye, Type, Volume2, Globe, Moon, Sun, Layout, Phone } from "lucide-react";
+import { Mail, Heart, Settings, X, Eye, Type, Volume2, Moon, Sun, Layout, Phone } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 
 export default function Footer() {
@@ -80,24 +80,6 @@ export default function Footer() {
       document.documentElement.classList.remove(className);
     }
   };
-
-  // Language Setter
-  const setLanguage = (targetLocale: string) => {
-    const currentClean = locale.toLowerCase().startsWith("hi") ? "hi" : "en";
-    if (currentClean === targetLocale) return;
-    
-    // Explicitly delete any old cookies at root path
-    document.cookie = "NEXT_LOCALE=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    
-    // Explicitly write the new cookie
-    document.cookie = `NEXT_LOCALE=${targetLocale}; path=/; max-age=31536000; SameSite=Lax`;
-    
-    // Reload the page
-    window.location.reload();
-  };
-
-  const isEn = locale.toLowerCase().startsWith("en");
-  const isHi = locale.toLowerCase().startsWith("hi");
 
   if (shouldHide) return null;
 
@@ -252,32 +234,7 @@ export default function Footer() {
                 </button>
               </div>
 
-              {/* Language Switcher (Explicit Buttons) */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white/5 border border-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-                    <Globe className="w-4 h-4 text-purple-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold">{t("select_lang")}</h3>
-                    <p className="text-[10px] text-white/50">{t("select_lang_desc")}</p>
-                  </div>
-                </div>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setLanguage("en")}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${isEn ? "bg-emerald-600 text-white" : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"}`}
-                  >
-                    English
-                  </button>
-                  <button
-                    onClick={() => setLanguage("hi")}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${isHi ? "bg-emerald-600 text-white" : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"}`}
-                  >
-                    हिंदी (Hindi)
-                  </button>
-                </div>
-              </div>
+
 
               {/* High Contrast */}
               <div className="flex items-center justify-between bg-white/5 border border-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors">

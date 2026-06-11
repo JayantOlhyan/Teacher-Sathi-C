@@ -455,8 +455,7 @@ export default function Navbar() {
                     onChange={(e) => setProfileLang(e.target.value)}
                     className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand text-sm font-semibold bg-white cursor-pointer"
                   >
-                    <option value="en">English (EN)</option>
-                    <option value="hi">Hindi (हिं)</option>
+                    <option value="en">English (US)</option>
                   </select>
                 </div>
               </div>

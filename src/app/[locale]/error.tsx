@@ -37,12 +37,10 @@ export default function ErrorPage({
       <div className="relative z-10 mt-2 max-w-[620px] bg-white border border-[#DCE4D7] rounded-3xl shadow-[0_1px_3px_rgba(28,43,28,0.07),0_4px_12px_rgba(28,43,28,0.05)] p-8 sm:p-10">
         <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1C2B1C] leading-snug">
           Oops! Our servers are taking a short break.
-          <span className="block font-medium font-devanagari text-lg sm:text-xl text-[#DC2626] mt-2 font-['Mukta']">
-            उफ़! हमारे सर्वर थोड़ा ब्रेक ले रहे हैं।
-          </span>
+          
         </h2>
         <p className="mt-4 text-[#5E6C5A] text-base sm:text-lg max-w-md mx-auto">
-          We encountered an unexpected glitch. Don't worry, our tech team has been notified and is fixing the wires!
+          We encountered an unexpected glitch. Don&apos;t worry, our tech team has been notified and is fixing the wires!
         </p>
       </div>
 
