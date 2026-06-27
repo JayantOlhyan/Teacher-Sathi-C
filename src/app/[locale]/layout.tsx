@@ -34,7 +34,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     openGraph: {
       type: 'website',
       locale: locale === 'hi' ? 'hi_IN' : 'en_IN',
-      url: `https://teachersathi.in/${locale}`,
+      url: `https://teacher-sathi.online/${locale}`,
       siteName: 'TeacherSathi',
       images: [
         {

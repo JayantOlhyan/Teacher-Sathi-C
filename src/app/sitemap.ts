@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://teachersathi.in';
+  const baseUrl = 'https://teacher-sathi.online';
   const paths = ['', '/pricing', '/login', '/signup'];
 
   return paths.map((path) => ({

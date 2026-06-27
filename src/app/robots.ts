@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/admin/',
     },
-    sitemap: 'https://teachersathi.in/sitemap.xml',
+    sitemap: 'https://teacher-sathi.online/sitemap.xml',
   };
 }

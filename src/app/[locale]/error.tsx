@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { Link } from '@/i18n/routing';
 
 export default function ErrorPage({
   error,
@@ -10,60 +11,65 @@ export default function ErrorPage({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error);
   }, [error]);
 
   return (
-    <div className="min-h-[85vh] flex flex-col items-center justify-center text-center px-[clamp(20px,5vw,48px)] py-12 relative overflow-hidden bg-[#F7F9F4]">
-      {/* Soft background blurs */}
-      <div className="absolute pointer-events-none z-0 rounded-full w-[400px] h-[400px] top-[-100px] right-[-100px] bg-[radial-gradient(circle,rgba(220,38,38,0.06)_0%,transparent_70%)] blur-[10px]" />
-      <div className="absolute pointer-events-none z-0 rounded-full w-[500px] h-[500px] bottom-[-150px] left-[-150px] bg-[radial-gradient(circle,rgba(234,179,8,0.06)_0%,transparent_70%)] blur-[10px]" />
-
-      <div className="relative flex items-center justify-center w-full max-w-lg aspect-[2/1] z-10 mb-6 sm:mb-8">
-        <p 
-          className="font-black text-[clamp(140px,22vw,240px)] leading-none select-none tracking-wider text-[#FBFCF8] drop-shadow-[0_14px_26px_rgba(22,101,52,0.12)]"
-          style={{ WebkitTextStroke: '2.5px #DC2626' }}
-        >
-          500
-        </p>
-        <img 
-          className="absolute top-1/2 left-1/2 w-[clamp(150px,22vw,240px)] h-auto transform -translate-x-1/2 -translate-y-1/2 animate-bounce drop-shadow-[0_22px_30px_rgba(28,43,28,0.22)]"
-          src="/assets/owl-mascot-green.png" 
-          alt="TeacherSathi owl mascot experiencing an error" 
-        />
+    <div className="min-h-[80vh] bg-[#F7F9F4] text-[#1C2B1C] font-sans antialiased flex flex-col items-center justify-center relative overflow-hidden px-6 py-16 selection:bg-red-100 selection:text-red-900">
+      {/* Ambient background glows */}
+      <div className="absolute pointer-events-none inset-0 overflow-hidden z-0">
+        <div className="absolute top-[10%] right-[15%] w-[500px] h-[500px] rounded-full bg-gradient-to-br from-red-500/10 to-amber-500/5 blur-3xl" />
+        <div className="absolute bottom-[10%] left-[15%] w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-orange-500/10 to-red-500/5 blur-3xl" />
       </div>
 
-      <div className="relative z-10 mt-2 max-w-[620px] bg-white border border-[#DCE4D7] rounded-3xl shadow-[0_1px_3px_rgba(28,43,28,0.07),0_4px_12px_rgba(28,43,28,0.05)] p-8 sm:p-10">
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1C2B1C] leading-snug">
-          Oops! Our servers are taking a short break.
-          
-        </h2>
-        <p className="mt-4 text-[#5E6C5A] text-base sm:text-lg max-w-md mx-auto">
-          We encountered an unexpected glitch. Don&apos;t worry, our tech team has been notified and is fixing the wires!
-        </p>
-      </div>
+      {/* Main Content Area */}
+      <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-3xl mx-auto w-full">
+        {/* Mascot in sleek glowing container */}
+        <div className="relative mb-8 group">
+          <div className="absolute inset-0 bg-red-500/15 rounded-full blur-xl transform group-hover:scale-110 transition-transform duration-500" />
+          <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-white border border-[#DCE4D7] shadow-xl flex items-center justify-center p-3 mx-auto transform rotate-2 hover:rotate-0 transition-transform duration-300">
+            <img 
+              src="/assets/owl-mascot-green.png" 
+              alt="TeacherSathi Mascot" 
+              className="w-full h-full object-contain"
+            />
+          </div>
+        </div>
 
-      <div className="relative z-10 flex flex-col sm:flex-row gap-4 mt-8 w-full max-w-md justify-center">
-        <button 
-          onClick={() => reset()}
-          className="inline-flex items-center justify-center gap-2 font-bold text-base px-8 py-4 bg-[#16A34A] hover:bg-[#128A3E] text-white rounded-full transition-all duration-200 shadow-[0_10px_28px_rgba(22,101,52,0.22)] hover:-translate-y-0.5 active:scale-95"
-        >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth="2.2" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
-          </svg>
-          Try Again
-        </button>
-        <a 
-          href="/" 
-          className="inline-flex items-center justify-center gap-2 font-bold text-base px-8 py-4 bg-white border-2 border-[#166534] text-[#166534] rounded-full hover:bg-[#EDF7EF] transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
-        >
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M3 9.5 12 3l9 6.5"/>
-            <path d="M5 10v10h14V10"/>
-          </svg>
-          Back to Home
-        </a>
+        {/* Error Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-100/80 border border-red-200 text-red-700 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
+          <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
+          Error 500 • Server Glitch
+        </div>
+
+        {/* Heading */}
+        <h1 className="text-3xl sm:text-5xl font-black text-[#1C2B1C] tracking-tight leading-tight sm:leading-tight">
+          Oops! Our servers are taking a quick break.
+        </h1>
+
+        {/* Subtext */}
+        <p className="mt-4 text-base sm:text-lg text-[#5E6C5A] max-w-xl mx-auto leading-relaxed font-normal">
+          We encountered an unexpected technical hiccup. Our engineering team has been notified and is fixing the wires right now!
+        </p>
+
+        {/* Action Buttons */}
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+          <button 
+            onClick={() => reset()}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-[#166534] hover:bg-[#15572B] text-white font-bold text-base shadow-lg shadow-emerald-900/15 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth="2.2" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+            </svg>
+            Try Again
+          </button>
+          <Link 
+            href="/" 
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-white hover:bg-[#F0F4EC] text-[#1C2B1C] font-bold text-base border border-[#DCE4D7] shadow-sm hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+          >
+            Back to Home
+          </Link>
+        </div>
       </div>
     </div>
   );
