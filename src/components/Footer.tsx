@@ -7,7 +7,6 @@ import { useTranslations, useLocale } from "next-intl";
 
 export default function Footer() {
   const t = useTranslations("Footer");
-  const tNav = useTranslations("Nav");
   const locale = useLocale();
   const pathname = usePathname();
   const hideFooterExactOrEnd = ["/video", "/test", "/quiz"];
@@ -101,56 +100,53 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Resources */}
+          {/* Products & Features */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-sm uppercase tracking-wider text-white/80">{t("resources")}</h3>
+            <h3 className="font-semibold text-xs uppercase tracking-wider text-white/80">Products & Features</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors">{tNav("pricing")}</Link></li>
+              <li><Link href="/dashboard" className="text-white/60 hover:text-white transition-colors">Interactive Dashboard</Link></li>
+              <li><Link href="/dashboard/create" className="text-white/60 hover:text-white transition-colors">AI Content Generation</Link></li>
+              <li><Link href="/dashboard/classes" className="text-white/60 hover:text-white transition-colors">Smart Classes</Link></li>
+              <li><Link href="/dashboard/whiteboard" className="text-white/60 hover:text-white transition-colors">Real-time Whiteboard</Link></li>
+              <li><Link href="/dashboard/activity" className="text-white/60 hover:text-white transition-colors">Activity Logs</Link></li>
+              <li><Link href="/dashboard/reports" className="text-white/60 hover:text-white transition-colors">Reports & Analytics</Link></li>
+              <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors">Pricing & Plans</Link></li>
+            </ul>
+          </div>
+
+          {/* Learning Resources */}
+          <div className="space-y-4">
+            <h3 className="font-semibold text-xs uppercase tracking-wider text-white/80">Learning Resources</h3>
+            <ul className="space-y-2 text-sm">
               <li><Link href="/resources/ncert" className="text-white/60 hover:text-white transition-colors">NCERT Class 6-10</Link></li>
               <li><Link href="/resources/lesson-plans" className="text-white/60 hover:text-white transition-colors">AI Lesson Plans</Link></li>
+              <li><Link href="/resources/mind-maps" className="text-white/60 hover:text-white transition-colors">Interactive Mind Maps</Link></li>
               <li><Link href="/resources/quiz-generator" className="text-white/60 hover:text-white transition-colors">Quiz Generator</Link></li>
-              <li><Link href="/resources/mind-maps" className="text-white/60 hover:text-white transition-colors">Mind Maps</Link></li>
+              <li><Link href="/content/class-10/science" className="text-white/60 hover:text-white transition-colors">Science Hub (Class 10)</Link></li>
             </ul>
           </div>
 
-          {/* Support */}
+          {/* Account & Support */}
           <div className="space-y-4">
-            <h3 className="font-bold text-sm uppercase tracking-widest text-[#A3E635]">{t("support_heading")}</h3>
+            <h3 className="font-semibold text-xs uppercase tracking-wider text-white/80">Account & Support</h3>
             <ul className="space-y-2 text-sm">
+              <li><Link href="/signup" className="text-white/60 hover:text-white transition-colors">Create Account</Link></li>
+              <li><Link href="/login" className="text-white/60 hover:text-white transition-colors">Member Login</Link></li>
+              <li><Link href="/support" className="text-white/60 hover:text-white transition-colors">Help Center</Link></li>
+              <li><Link href="/support/contact" className="text-white/60 hover:text-white transition-colors">Contact Support</Link></li>
+              <li><Link href="/support/sitemap" className="text-white/60 hover:text-white transition-colors">Site Map</Link></li>
+            </ul>
+          </div>
+
+          {/* About & Contact */}
+          <div className="space-y-4">
+            <h3 className="font-semibold text-xs uppercase tracking-wider text-white/80">About & Contact</h3>
+            <ul className="space-y-2 text-sm mb-4">
               <li><Link href="/#how-it-works" className="text-white/60 hover:text-white transition-colors">How It Works</Link></li>
-              <li><Link href="/support" className="text-white/60 hover:text-white transition-colors">{t("help_center_faq")}</Link></li>
-              <li><Link href="/support/contact" className="text-white/60 hover:text-white transition-colors">{t("contact_support")}</Link></li>
-              <li><Link href="/terms" className="text-white/60 hover:text-white transition-colors">{t("terms_of_use")}</Link></li>
-              <li><Link href="/privacy" className="text-white/60 hover:text-white transition-colors">{t("privacy_policy")}</Link></li>
-              <li><Link href="/support" className="text-white/60 hover:text-white transition-colors">{t("sitemap")}</Link></li>
+              <li><Link href="/terms" className="text-white/60 hover:text-white transition-colors">Terms of Use</Link></li>
+              <li><Link href="/privacy" className="text-white/60 hover:text-white transition-colors">Privacy Policy</Link></li>
             </ul>
-          </div>
-
-          {/* Meet the Team */}
-          <div className="space-y-4">
-            <h3 className="font-semibold text-sm uppercase tracking-wider text-white/80">{t("meet_the_team")}</h3>
-            <div className="space-y-3">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-[10px] font-bold text-emerald-400">JO</div>
-                <div>
-                  <p className="text-xs font-semibold text-white/95 leading-tight">Jayant Olhyan</p>
-                  <p className="text-[9px] text-white/40 font-bold uppercase tracking-widest mt-0.5">Founder / Lead</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-[10px] font-bold text-emerald-400">TM</div>
-                <div>
-                  <p className="text-xs font-semibold text-white/95 leading-tight">Team Member</p>
-                  <p className="text-[9px] text-white/40 font-bold uppercase tracking-widest mt-0.5">Developer / Role</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Contact */}
-          <div className="space-y-4">
-            <h3 className="font-semibold text-sm uppercase tracking-wider text-white/80">{t("contact")}</h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm mt-4 pt-4 border-t border-white/10">
               <li>
                 <a href="mailto:jayantolhyan@khelclan.online" className="text-white/60 hover:text-white transition-colors flex items-center gap-2">
                   <Mail className="w-4 h-4" /> jayantolhyan@khelclan.online
